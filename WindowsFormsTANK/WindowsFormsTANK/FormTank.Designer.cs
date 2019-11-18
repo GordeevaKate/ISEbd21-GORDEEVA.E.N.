@@ -33,8 +33,8 @@
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
-            this.pictureBoxCreate = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCreate)).BeginInit();
+            this.pictureBoxTanks = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTanks)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreate
@@ -57,6 +57,7 @@
             this.buttonUp.Size = new System.Drawing.Size(30, 30);
             this.buttonUp.TabIndex = 5;
             this.buttonUp.UseVisualStyleBackColor = true;
+            this.buttonUp.Click += new System.EventHandler(this.ButtonUp_Click);
             // 
             // buttonRight
             // 
@@ -68,6 +69,7 @@
             this.buttonRight.Size = new System.Drawing.Size(30, 30);
             this.buttonRight.TabIndex = 4;
             this.buttonRight.UseVisualStyleBackColor = true;
+            this.buttonRight.Click += new System.EventHandler(this.ButtonRight_Click);
             // 
             // buttonLeft
             // 
@@ -79,6 +81,7 @@
             this.buttonLeft.Size = new System.Drawing.Size(30, 30);
             this.buttonLeft.TabIndex = 3;
             this.buttonLeft.UseVisualStyleBackColor = true;
+            this.buttonLeft.Click += new System.EventHandler(this.ButtonLeft_Click);
             // 
             // buttonDown
             // 
@@ -90,15 +93,16 @@
             this.buttonDown.Size = new System.Drawing.Size(30, 30);
             this.buttonDown.TabIndex = 2;
             this.buttonDown.UseVisualStyleBackColor = true;
+            this.buttonDown.Click += new System.EventHandler(this.ButtonDown_Click);
             // 
-            // pictureBoxCreate
+            // pictureBoxTanks
             // 
-            this.pictureBoxCreate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxCreate.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxCreate.Name = "pictureBoxCreate";
-            this.pictureBoxCreate.Size = new System.Drawing.Size(884, 561);
-            this.pictureBoxCreate.TabIndex = 0;
-            this.pictureBoxCreate.TabStop = false;
+            this.pictureBoxTanks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTanks.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTanks.Name = "pictureBoxTanks";
+            this.pictureBoxTanks.Size = new System.Drawing.Size(884, 561);
+            this.pictureBoxTanks.TabIndex = 0;
+            this.pictureBoxTanks.TabStop = false;
             // 
             // FormTank
             // 
@@ -110,18 +114,18 @@
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonCreate);
-            this.Controls.Add(this.pictureBoxCreate);
+            this.Controls.Add(this.pictureBoxTanks);
             this.Name = "FormTank";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tank";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCreate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTanks)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxCreate;
+        private System.Windows.Forms.PictureBox pictureBoxTanks;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
