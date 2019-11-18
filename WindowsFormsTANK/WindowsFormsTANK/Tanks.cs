@@ -2,10 +2,12 @@
 namespace WindowsFormsTANK
 {
     public class Tanks
-    { 
-     public Color MainColor { private set; get; }
-    public Color DopColor { private set; get; }
-    public bool Guns { private set; get; }// 
+    {
+        private DrawGuns drawguns;
+        public Color MainColor { private set; get; }
+        public Guns guns { private get; set; }
+        public Color DopColor { private set; get; }
+    public bool Guns1 { private set; get; }// 
     public bool Wheels { private set; get; }// 
     public bool Symbol { private set; get; }//   
     public bool ArmoredTank { private set; get; }//    armored car
@@ -22,7 +24,7 @@ namespace WindowsFormsTANK
         MainColor = mainColor;
         DopColor = dopColor;
         Wheels = wheels;
-        Guns = guns;
+        Guns1 = guns;
         Symbol = symbol;
         ArmoredTank = armoredTank;
 
@@ -91,12 +93,11 @@ namespace WindowsFormsTANK
             g.FillEllipse(dopBrush, _startPosX + 150, _startPosY + 25, 15, 15);
         }
 
-        if (Guns)
+        if (Guns1)
         {
-                g.FillRectangle(spoiler, _startPosX + 145, _startPosY - 20, 35, 4);
-                g.FillRectangle(spoiler, _startPosX + 160, _startPosY - 10, 35, 8);
-                g.FillRectangle(spoiler, _startPosX + 185, _startPosY + 10, 35, 8);
-            }
+                drawguns = new DrawGuns(Guns.Three, _startPosX, _startPosY, DopColor);
+                drawguns.GunsDraw(g);
+        }
 
         if (Symbol)
         {
