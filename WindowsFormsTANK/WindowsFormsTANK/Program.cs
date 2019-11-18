@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsTanks
+namespace WindowsFormsTANK
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace WindowsFormsTanks
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormTank());
         }
     }
 }

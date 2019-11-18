@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsTanks
+﻿namespace WindowsFormsTANK
 {
-    partial class Form1
+    partial class FormTank
     {
         /// <summary>
         /// Обязательная переменная конструктора.

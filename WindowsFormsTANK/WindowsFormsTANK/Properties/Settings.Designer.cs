@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsTanks.Properties
+namespace WindowsFormsTANK.Properties
 {
 
 

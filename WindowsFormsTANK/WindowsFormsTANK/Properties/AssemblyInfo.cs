@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("WindowsFormsTanks")]
+[assembly: AssemblyTitle("WindowsFormsTANK")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsFormsTanks")]
+[assembly: AssemblyProduct("WindowsFormsTANK")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("82c3f629-dd3e-48ee-ab60-58225c782939")]
+[assembly: Guid("035ecce3-da9f-4f08-876f-e74ca7ef5e68")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
