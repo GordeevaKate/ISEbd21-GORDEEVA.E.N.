@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-
+//1laba
 namespace WindowsFormsTANK
 {
     public partial class FormTank : Form
