@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-//1laba
 namespace WindowsFormsTANK
 {
     public partial class FormTank : Form
     {
-        private Tanks tank;
+        private ITransport tank;
         public FormTank()
         {
             InitializeComponent();
@@ -20,7 +19,7 @@ namespace WindowsFormsTANK
         }
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true, true);
+            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true);
             tank.SetPosition(50, 50, pictureBoxTanks.Width,
              pictureBoxTanks.Height);
             Draw();
@@ -68,6 +67,14 @@ namespace WindowsFormsTANK
         private void ButtonLeft_Click(object sender, EventArgs e)
         {
             tank.MoveTransport(Direction.Left);
+            Draw();
+        }
+
+        private void ButtonCreateVehicle_Click(object sender, EventArgs e)
+        {
+            tank = new Tanks(100, 500, Color.Green, Color.Yellow, true, true, false, true);
+            tank.SetPosition(50, 50, pictureBoxTanks.Width,
+           pictureBoxTanks.Height);
             Draw();
         }
     }

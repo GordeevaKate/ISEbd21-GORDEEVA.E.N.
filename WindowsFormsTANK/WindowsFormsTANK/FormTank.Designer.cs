@@ -34,12 +34,13 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.pictureBoxTanks = new System.Windows.Forms.PictureBox();
+            this.buttonCreateVehicle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTanks)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(0, 0);
+            this.buttonCreate.Location = new System.Drawing.Point(161, 0);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(95, 43);
             this.buttonCreate.TabIndex = 1;
@@ -104,11 +105,22 @@
             this.pictureBoxTanks.TabIndex = 0;
             this.pictureBoxTanks.TabStop = false;
             // 
+            // buttonCreateVehicle
+            // 
+            this.buttonCreateVehicle.Location = new System.Drawing.Point(0, 1);
+            this.buttonCreateVehicle.Name = "buttonCreateVehicle";
+            this.buttonCreateVehicle.Size = new System.Drawing.Size(113, 41);
+            this.buttonCreateVehicle.TabIndex = 6;
+            this.buttonCreateVehicle.Text = "Create Vehicle";
+            this.buttonCreateVehicle.UseVisualStyleBackColor = true;
+            this.buttonCreateVehicle.Click += new System.EventHandler(this.ButtonCreateVehicle_Click);
+            // 
             // FormTank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.buttonCreateVehicle);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
@@ -131,6 +143,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
+        private System.Windows.Forms.Button buttonCreateVehicle;
     }
 }
 
