@@ -16,5 +16,10 @@ namespace WindowsFormsTANK
         {
             InitializeComponent();
         }
+
+        private void ButtonCreate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
