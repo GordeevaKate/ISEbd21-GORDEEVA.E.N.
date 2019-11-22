@@ -1,8 +1,8 @@
-﻿using System.Drawing;
+﻿using System.Drawing;
+using System.Collections.Generic;
 
-
-    public class Base<T> where T : class, ITransport
-    {
+public class Base<T> where T : class, ITransport 
+{
     private T[] _places;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
@@ -51,7 +51,40 @@
         }
         return null;
     }
- private bool CheckFreePlace(int index)
+
+    public static int operator *(Base<T> p, int size)
+    {
+        List<T> clones = new List<T>();
+        if (p._places.Length + 1 < size)
+        {
+            return -1;
+        }
+        for (int i = 0; i < p._places.Length; i++)
+        {
+            if (!p.CheckFreePlace(i))
+            {
+                clones.Add(p._places[i]);
+            }
+        }
+        foreach (T vehicle in clones)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                T newVehicle = (T)vehicle.Clone();
+                int index = p + newVehicle;
+            }
+        }
+        return 1;
+    }
+    public static int operator /(Base<T> p, int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            p._places[i] = null;
+        }
+        return 1;
+    }
+    private bool CheckFreePlace(int index)
     {
         return _places[index] == null;
     }

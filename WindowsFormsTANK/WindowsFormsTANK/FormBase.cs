@@ -72,5 +72,17 @@ pictureBoxBase.Height);
                 Draw();
             }
         }
+
+        private void ButtonRemove_Click(object sender, EventArgs e)
+        {
+            int place = basa / 15;
+            Draw();
+        }
+
+        private void ButtonSetAll_Click(object sender, EventArgs e)
+        {
+            int place = basa * 15;
+            Draw();
+        }
     }
 }
