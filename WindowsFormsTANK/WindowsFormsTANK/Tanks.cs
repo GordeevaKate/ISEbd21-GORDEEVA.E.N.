@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 namespace WindowsFormsTANK
 {
     public class Tanks : TANKVehicle
@@ -21,8 +22,8 @@ namespace WindowsFormsTANK
         Guns = guns;
         Symbol = symbol;
         ArmoredTank = armoredTank;
-
-    }
+            Random rnd = new Random();
+        }
    
     public override void DrawTank(Graphics g)
     {
@@ -41,5 +42,11 @@ namespace WindowsFormsTANK
                 g.DrawLine(sp, _startPosX + 150, _startPosY + 5, _startPosX + 125, _startPosY + 18);
             }        
     }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+          
+        }
+
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxBase = new System.Windows.Forms.PictureBox();
-            this.buttonSetTank = new System.Windows.Forms.Button();
             this.buttonSetVehicle = new System.Windows.Forms.Button();
             this.groupBoxBase = new System.Windows.Forms.GroupBox();
             this.pictureBoxTakeTank = new System.Windows.Forms.PictureBox();
@@ -51,23 +50,13 @@
             this.pictureBoxBase.TabIndex = 0;
             this.pictureBoxBase.TabStop = false;
             // 
-            // buttonSetTank
-            // 
-            this.buttonSetTank.Location = new System.Drawing.Point(878, 129);
-            this.buttonSetTank.Name = "buttonSetTank";
-            this.buttonSetTank.Size = new System.Drawing.Size(102, 37);
-            this.buttonSetTank.TabIndex = 1;
-            this.buttonSetTank.Text = "припарковать танк";
-            this.buttonSetTank.UseVisualStyleBackColor = true;
-            this.buttonSetTank.Click += new System.EventHandler(this.ButtonSetTank_Click);
-            // 
             // buttonSetVehicle
             // 
-            this.buttonSetVehicle.Location = new System.Drawing.Point(879, 172);
+            this.buttonSetVehicle.Location = new System.Drawing.Point(888, 144);
             this.buttonSetVehicle.Name = "buttonSetVehicle";
             this.buttonSetVehicle.Size = new System.Drawing.Size(101, 38);
             this.buttonSetVehicle.TabIndex = 2;
-            this.buttonSetVehicle.Text = "припарковать бронемашину";
+            this.buttonSetVehicle.Text = "припарковать";
             this.buttonSetVehicle.UseVisualStyleBackColor = true;
             this.buttonSetVehicle.Click += new System.EventHandler(this.ButtonSetVehicle_Click);
             // 
@@ -110,8 +99,7 @@
             this.labelBaseTank.Size = new System.Drawing.Size(38, 13);
             this.labelBaseTank.TabIndex = 2;
             this.labelBaseTank.Text = "место";
-            this.labelBaseTank.Click += new System.EventHandler(this.LabelBaseTank_Click);
-            // 
+               // 
             // maskedTextBox
             // 
             this.maskedTextBox.Location = new System.Drawing.Point(63, 75);
@@ -145,7 +133,6 @@
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBoxBase);
             this.Controls.Add(this.buttonSetVehicle);
-            this.Controls.Add(this.buttonSetTank);
             this.Controls.Add(this.pictureBoxBase);
             this.Name = "FormBase";
             this.Text = "База";
@@ -160,7 +147,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxBase;
-        private System.Windows.Forms.Button buttonSetTank;
         private System.Windows.Forms.Button buttonSetVehicle;
         private System.Windows.Forms.GroupBox groupBoxBase;
         private System.Windows.Forms.Label labelBase;

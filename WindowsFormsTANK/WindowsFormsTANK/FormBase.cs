@@ -6,6 +6,7 @@ namespace WindowsFormsTANK
     public partial class FormBase : Form
     {
         MultiLevelBase basa;
+        FormTankConfig form;
         private const int countLevel = 5;
         public FormBase()
         {
@@ -18,7 +19,7 @@ pictureBoxBase.Height);
             }
             listBoxLevels.SelectedIndex = 0;
         }
-        private void Draw()
+      private void Draw()//
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
@@ -31,52 +32,31 @@ pictureBoxBase.Height);
             }
         }
 
-            private void ButtonSetTank_Click(object sender, EventArgs e)
-            {
-                if (listBoxLevels.SelectedIndex > -1)
-                {
-                    ColorDialog dialog = new ColorDialog();
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        ColorDialog dialogDop = new ColorDialog();
-                        if (dialogDop.ShowDialog() == DialogResult.OK)
-                        {
-                            var car = new Tanks(100, 1000, dialog.Color,
-                           dialogDop.Color, true,true, true, true);
-                            int place = basa[listBoxLevels.SelectedIndex] + car;
-                            if (place == -1)
-                            {
-                                MessageBox.Show("Нет свободных мест", "Ошибка",
-                               MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            Draw();
-                        }
-                    }
-                }
-
-
-            }
-
+          
             private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
-            if (listBoxLevels.SelectedIndex > -1)
+           //
+                form = new FormTankConfig();
+                form.AddEvent(AddTank);
+                form.Show();
+           
+        }
+        private void AddTank(ITransport tank)//
+        {
+            if (tank != null && listBoxLevels.SelectedIndex > -1)
             {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
+                int place = basa[listBoxLevels.SelectedIndex] + tank;
+                if (place > -1)
                 {
-                    var car = new TANKVehicle(100, 1000, dialog.Color);
-                    int place = basa[listBoxLevels.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
                 }
             }
         }
-
-        private void ButtonTake_Click(object sender, EventArgs e)
+        private void ButtonTake_Click(object sender, EventArgs e)//
         {
 
             if (listBoxLevels.SelectedIndex > -1)
@@ -106,14 +86,9 @@ pictureBoxBase.Height);
             } 
         }
 
-        private void LabelBaseTank_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Draw();
+            Draw();//
         }
     }
 }
