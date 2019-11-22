@@ -34,7 +34,9 @@
         }
         return -1;
     }
- public static T operator -(Base<T> p, int index)
+ 
+
+    public static T operator -(Base<T> p, int index)
     {
         if (index < 0 || index > p._places.Length)
         {
