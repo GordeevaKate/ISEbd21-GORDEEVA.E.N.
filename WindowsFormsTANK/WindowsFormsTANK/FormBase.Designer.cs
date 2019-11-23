@@ -37,16 +37,23 @@
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelBase = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.afqkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTank)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxBase
             // 
-            this.pictureBoxBase.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBase.Location = new System.Drawing.Point(-1, 28);
             this.pictureBoxBase.Name = "pictureBoxBase";
-            this.pictureBoxBase.Size = new System.Drawing.Size(873, 506);
+            this.pictureBoxBase.Size = new System.Drawing.Size(873, 478);
             this.pictureBoxBase.TabIndex = 0;
             this.pictureBoxBase.TabStop = false;
             // 
@@ -99,7 +106,7 @@
             this.labelBaseTank.Size = new System.Drawing.Size(38, 13);
             this.labelBaseTank.TabIndex = 2;
             this.labelBaseTank.Text = "место";
-               // 
+            // 
             // maskedTextBox
             // 
             this.maskedTextBox.Location = new System.Drawing.Point(63, 75);
@@ -125,6 +132,48 @@
             this.listBoxLevels.TabIndex = 4;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.ListBoxLevels_SelectedIndexChanged);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.afqkToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1258, 24);
+            this.menuStrip.TabIndex = 5;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // afqkToolStripMenuItem
+            // 
+            this.afqkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.afqkToolStripMenuItem.Name = "afqkToolStripMenuItem";
+            this.afqkToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.afqkToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.СохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.ЗагрузитьToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,13 +183,18 @@
             this.Controls.Add(this.groupBoxBase);
             this.Controls.Add(this.buttonSetVehicle);
             this.Controls.Add(this.pictureBoxBase);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormBase";
             this.Text = "База";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             this.groupBoxBase.ResumeLayout(false);
             this.groupBoxBase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTank)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -155,5 +209,11 @@
         private System.Windows.Forms.Label labelBaseTank;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem afqkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

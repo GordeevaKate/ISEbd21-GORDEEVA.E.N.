@@ -24,8 +24,23 @@ namespace WindowsFormsTANK
         ArmoredTank = armoredTank;
             Random rnd = new Random();
         }
-   
-    public override void DrawTank(Graphics g)
+        public Tanks(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 8)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                      Wheels = Convert.ToBoolean(strs[4]);
+                ArmoredTank = Convert.ToBoolean(strs[5]);
+                Guns = Convert.ToBoolean(strs[6]);
+                Symbol = Convert.ToBoolean(strs[7]);
+            }
+           
+        }
+        public override void DrawTank(Graphics g)
     {
             base.DrawTank(g);
             Brush spoiler = new SolidBrush(DopColor);
@@ -47,6 +62,12 @@ namespace WindowsFormsTANK
             DopColor = color;
           
         }
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Wheels + ";" +
+            ArmoredTank + ";" + Guns + ";" + Symbol;
+         
+        }
 
     }
 }

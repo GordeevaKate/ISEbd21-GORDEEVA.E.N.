@@ -1,14 +1,33 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 namespace WindowsFormsTANK
 {
     public class TANKVehicle : ArmoredVehicle
     {
+        protected const int tankWidth = 100;
+        
+        protected const int tankHeight = 60;
         public TANKVehicle(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
         }
+        public TANKVehicle(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
+
+
+
+
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -60,6 +79,9 @@ namespace WindowsFormsTANK
             g.FillEllipse(pen2, _startPosX + 120, _startPosY + 25, 15, 15);
             g.FillEllipse(pen2, _startPosX + 150, _startPosY + 25, 15, 15);         
         }
-
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
+        }
     }
 }
