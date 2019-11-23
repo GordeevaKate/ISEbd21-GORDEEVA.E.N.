@@ -121,11 +121,6 @@ DragDropEffects.Copy);
             }
         }
 
-        private void LabelDopColors_DragEnter(object sender, DragEventArgs e)
-        {
-
-        }
-
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             eventAddTank?.Invoke(tank);
