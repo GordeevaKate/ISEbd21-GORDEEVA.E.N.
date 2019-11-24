@@ -11,7 +11,7 @@ public abstract class ArmoredVehicle : ITransport
     public void SetPosition(int x, int y, int width, int height)
     {
         _startPosX = x;
-        _startPosY = y;
+        _startPosY= y;
         _pictureWidth = width;
         _pictureHeight = height;
     }
