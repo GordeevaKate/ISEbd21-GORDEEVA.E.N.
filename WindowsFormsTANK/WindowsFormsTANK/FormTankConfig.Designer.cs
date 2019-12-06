@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.labelGunsWithAngle = new System.Windows.Forms.Label();
+            this.labelGunsWithPattern = new System.Windows.Forms.Label();
+            this.labelSimpleGuns = new System.Windows.Forms.Label();
             this.buttonCansel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.labeltank = new System.Windows.Forms.Label();
             this.labelVehicle = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.labelGunsType = new System.Windows.Forms.Label();
             this.labelDopColors = new System.Windows.Forms.Label();
             this.labelVainColors = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -46,10 +50,6 @@
             this.panelBlack = new System.Windows.Forms.Panel();
             this.panelRed = new System.Windows.Forms.Panel();
             this.panelWhite = new System.Windows.Forms.Panel();
-            this.labelSimpleGuns = new System.Windows.Forms.Label();
-            this.labelGunsWithPattern = new System.Windows.Forms.Label();
-            this.labelGunsWithAngle = new System.Windows.Forms.Label();
-            this.labelGunsType = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -71,6 +71,36 @@
             this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "тип машины";
+            // 
+            // labelGunsWithAngle
+            // 
+            this.labelGunsWithAngle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelGunsWithAngle.Location = new System.Drawing.Point(2, 211);
+            this.labelGunsWithAngle.Name = "labelGunsWithAngle";
+            this.labelGunsWithAngle.Size = new System.Drawing.Size(131, 34);
+            this.labelGunsWithAngle.TabIndex = 6;
+            this.labelGunsWithAngle.Text = "Разноцветное орудие";
+            this.labelGunsWithAngle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelGunsWithAngle_MouseDown);
+            // 
+            // labelGunsWithPattern
+            // 
+            this.labelGunsWithPattern.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelGunsWithPattern.Location = new System.Drawing.Point(0, 168);
+            this.labelGunsWithPattern.Name = "labelGunsWithPattern";
+            this.labelGunsWithPattern.Size = new System.Drawing.Size(131, 34);
+            this.labelGunsWithPattern.TabIndex = 5;
+            this.labelGunsWithPattern.Text = "Орудие с рисунком";
+            this.labelGunsWithPattern.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelGunsWithPattern_MouseDown);
+            // 
+            // labelSimpleGuns
+            // 
+            this.labelSimpleGuns.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSimpleGuns.Location = new System.Drawing.Point(2, 124);
+            this.labelSimpleGuns.Name = "labelSimpleGuns";
+            this.labelSimpleGuns.Size = new System.Drawing.Size(131, 34);
+            this.labelSimpleGuns.TabIndex = 4;
+            this.labelSimpleGuns.Text = "Простое орудие";
+            this.labelSimpleGuns.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelSimpleGuns_MouseDown);
             // 
             // buttonCansel
             // 
@@ -124,6 +154,18 @@
             this.panel.TabIndex = 2;
             this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
             this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.Panel_DragEnter);
+            // 
+            // labelGunsType
+            // 
+            this.labelGunsType.AllowDrop = true;
+            this.labelGunsType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelGunsType.Location = new System.Drawing.Point(38, 218);
+            this.labelGunsType.Name = "labelGunsType";
+            this.labelGunsType.Size = new System.Drawing.Size(277, 41);
+            this.labelGunsType.TabIndex = 3;
+            this.labelGunsType.Text = "GunsType";
+            this.labelGunsType.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelGunsType_DragDrop);
+            this.labelGunsType.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelGunsType_DragEnter_1);
             // 
             // labelDopColors
             // 
@@ -247,45 +289,6 @@
             this.panelWhite.Size = new System.Drawing.Size(58, 53);
             this.panelWhite.TabIndex = 8;
             this.panelWhite.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
-            // 
-            // labelSimpleGuns
-            // 
-            this.labelSimpleGuns.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelSimpleGuns.Location = new System.Drawing.Point(2, 124);
-            this.labelSimpleGuns.Name = "labelSimpleGuns";
-            this.labelSimpleGuns.Size = new System.Drawing.Size(131, 34);
-            this.labelSimpleGuns.TabIndex = 4;
-            this.labelSimpleGuns.Text = "Простое орудие";
-            // 
-            // labelGunsWithPattern
-            // 
-            this.labelGunsWithPattern.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelGunsWithPattern.Location = new System.Drawing.Point(0, 168);
-            this.labelGunsWithPattern.Name = "labelGunsWithPattern";
-            this.labelGunsWithPattern.Size = new System.Drawing.Size(131, 34);
-            this.labelGunsWithPattern.TabIndex = 5;
-            this.labelGunsWithPattern.Text = "Орудие с рисунком";
-            // 
-            // labelGunsWithAngle
-            // 
-            this.labelGunsWithAngle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelGunsWithAngle.Location = new System.Drawing.Point(2, 211);
-            this.labelGunsWithAngle.Name = "labelGunsWithAngle";
-            this.labelGunsWithAngle.Size = new System.Drawing.Size(131, 34);
-            this.labelGunsWithAngle.TabIndex = 6;
-            this.labelGunsWithAngle.Text = "Разноцветное орудие";
-            // 
-            // labelGunsType
-            // 
-            this.labelGunsType.AllowDrop = true;
-            this.labelGunsType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelGunsType.Location = new System.Drawing.Point(38, 218);
-            this.labelGunsType.Name = "labelGunsType";
-            this.labelGunsType.Size = new System.Drawing.Size(277, 41);
-            this.labelGunsType.TabIndex = 3;
-            this.labelGunsType.Text = "GunsType";
-            this.labelGunsType.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelGunsType_DragDrop);
-            this.labelGunsType.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelGunsType_DragEnter_1);
             // 
             // FormTankConfig
             // 

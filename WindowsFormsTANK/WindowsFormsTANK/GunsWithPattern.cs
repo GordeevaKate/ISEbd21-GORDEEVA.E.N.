@@ -36,6 +36,6 @@ public class GunsWithPattern : IGuns
                 }
             }
         }
-        throw new NotImplementedException();
+       
     }
 }

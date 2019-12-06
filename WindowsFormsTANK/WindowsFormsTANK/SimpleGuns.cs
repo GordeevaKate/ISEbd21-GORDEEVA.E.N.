@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 public class SimpleGuns : IGuns
 {
     public float _startPosX;
@@ -17,7 +17,8 @@ public class SimpleGuns : IGuns
     {
         int n = (int)numberOfGuns;
         Brush br1 = new SolidBrush(color);
-
+        g.FillRectangle(br1, _startPosX + 22, _startPosY + 5, 47, 15);
+        Pen pen = new Pen(Color.Black);
         if (n >= 0)
         {
             g.FillRectangle(br1, _startPosX + 145, _startPosY - 20, 35, 4);
@@ -30,5 +31,10 @@ public class SimpleGuns : IGuns
                 }
             }
         }
+
+
+
+
+
     }
 }

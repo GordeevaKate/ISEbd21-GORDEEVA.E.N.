@@ -43,7 +43,7 @@ public class Base<T, N> where T : class, ITransport where N : class, IGuns
     }
  public static T operator -(Base<T, N> p, int index)
     {
-        if (index < 0 || index > p.sizeOfBase)
+        if (index < 0 || index > p._maxCount)
         {
             return null;
         }
