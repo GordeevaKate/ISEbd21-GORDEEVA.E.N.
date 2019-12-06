@@ -75,6 +75,7 @@
     <Compile Include="MultiLevelBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleGuns.cs" />
     <Compile Include="Tanks.cs" />
     <Compile Include="TANKVehicle.cs" />
     <EmbeddedResource Include="FormBase.resx">
