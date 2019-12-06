@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-public class Base<T> where T : class, ITransport
-    {
+using System.Collections;
+public class Base<T, N> where T : class, ITransport where N : class, IGuns
+{
     private Dictionary<int, T> _places;
+    private N[] placesGuns;
     private int _maxCount;
+    private ArrayList removed;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
    private const int _placeSizeWidth = 210;
@@ -13,11 +16,13 @@ public class Base<T> where T : class, ITransport
     public Base(int sizes, int pictureWidth, int pictureHeight)
     {
         _maxCount = sizes;
+        placesGuns = new N[sizes];
+        removed = new ArrayList();
         _places = new Dictionary<int, T>();
         PictureWidth = pictureWidth;
         PictureHeight = pictureHeight;
     }
-    public static int operator +(Base<T> p, T tank)
+    public static int operator +(Base<T, N> p, T tank)
     {
         if (p._places.Count == p._maxCount)
         {
@@ -36,18 +41,25 @@ public class Base<T> where T : class, ITransport
         }
         return -1;
     }
- public static T operator -(Base<T> p, int index)
-    {     
+ public static T operator -(Base<T, N> p, int index)
+    {
+        if (index < 0 || index > p.sizeOfBase)
+        {
+            return null;
+        }
         if (!p.CheckFreePlace(index))
-         
- {
+        { 
             T tank = p._places[index-1];
             p._places.Remove(index-1);
             return tank;
         }
         return null;
     }
- private bool CheckFreePlace(int index)
+    public T GetTransportByKey(int key)
+    {
+        return _places.ContainsKey(key) ? _places[key] : null;
+    }
+    private bool CheckFreePlace(int index)
     {
         return !_places.ContainsKey(index);
     }
@@ -55,11 +67,13 @@ public class Base<T> where T : class, ITransport
     public void Draw(Graphics g)
     {
         DrawMarking(g);
-        var keys = _places.Keys.ToList();
-        for (int i = 0; i < keys.Count; i++)
-        {
-            _places[keys[i]].DrawTank(g);
-        }
+        for (int i = 0; i < _maxCount; i++)
+                {
+            if (!CheckFreePlace(i))
+            {//если место не пустое                     
+                _places[i].DrawTank(g);
+            }
+        }     
     }
    
     private void DrawMarking(Graphics g)
