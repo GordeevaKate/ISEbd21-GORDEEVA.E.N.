@@ -70,7 +70,7 @@ DragDropEffects.Copy);
                     break;
                 case "Tank":
                     tank = new Tanks(100, 500, Color.White, Color.Black,true, true, true,
-                   true);
+                   true,Guns.Three,0);
                     break;
             }
             DrawTanks();
@@ -108,7 +108,22 @@ DragDropEffects.Copy);
                 }
             }
         }
+        private void labelSimpleGuns_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelSimpleGuns.DoDragDrop(labelSimpleGuns.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
 
+        private void labelGunsWithPattern_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelGunsWithPattern.DoDragDrop(labelGunsWithPattern.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
+
+        private void labelGunsWithAngle_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelGunsWithAngle.DoDragDrop(labelGunsWithAngle.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
+       
+       
         private void LabelVainColors_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(Color)))
@@ -137,6 +152,41 @@ DragDropEffects.Copy);
         {
             panelRed.DoDragDrop(labeltank.Text, DragDropEffects.Move |
 DragDropEffects.Copy);
+        }
+
+        private void LabelGunsType_DragEnter_1(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void LabelGunsType_DragDrop(object sender, DragEventArgs e)
+        {
+            if (tank != null)
+            {
+                if (tank is Tanks)
+                {
+                    switch (e.Data.GetData(DataFormats.Text).ToString())
+                    {
+                        case "Простое орудие":
+                            (tank as Tanks).SetGunType(0);
+                            break;
+                        case "Орудие с рисунком":
+                            (tank as Tanks).SetGunType(1);
+                            break;
+                        case "Разноцветное орудие":
+                            (tank as Tanks).SetGunType(2);
+                            break;
+                    }
+                    DrawTanks();
+                }
+            }
         }
     }
 }

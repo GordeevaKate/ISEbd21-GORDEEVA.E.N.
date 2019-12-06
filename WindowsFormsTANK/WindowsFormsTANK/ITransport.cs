@@ -5,6 +5,7 @@
         void MoveTransport(Direction direction);
         void DrawTank(Graphics g);
     void SetMainColor(Color color);
+    
 }
 
 
