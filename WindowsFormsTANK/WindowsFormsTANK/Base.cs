@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
 
-public class Base<T> where T : class, ITransport 
+public class Base<T,N> where T : class, ITransport 
 {
     private T[] _places;
     private int PictureWidth { get; set; }
@@ -19,7 +19,7 @@ public class Base<T> where T : class, ITransport
             _places[i] = null;
         }
     }
-    public static int operator +(Base<T> p, T tank)
+    public static int operator +(Base<T,N> p, T tank)
     {
         for (int i = 0; i < p._places.Length; i++)
         {
@@ -36,7 +36,7 @@ public class Base<T> where T : class, ITransport
     }
  
 
-    public static T operator -(Base<T> p, int index)
+    public static T operator -(Base<T,N> p, int index)
     {
         if (index < 0 || index > p._places.Length)
         {
@@ -52,7 +52,7 @@ public class Base<T> where T : class, ITransport
         return null;
     }
 
-    public static int operator *(Base<T> p, int size)
+    public static int operator *(Base<T,N> p, int size)
     {
         List<T> clones = new List<T>();
         if (p._places.Length + 1 < size)
@@ -76,7 +76,7 @@ public class Base<T> where T : class, ITransport
         }
         return 1;
     }
-    public static int operator /(Base<T> p, int x)
+    public static int operator /(Base<T,N> p, int x)
     {
         for (int i = 0; i < x; i++)
         {

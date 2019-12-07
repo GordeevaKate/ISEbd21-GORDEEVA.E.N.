@@ -9,7 +9,7 @@ namespace WindowsFormsTANK
         public FormBase()
         {
             InitializeComponent();
-            basa = new Base<ITransport>(20, pictureBoxBase.Width,
+            basa = new Base<ITransport, IGuns>(20, pictureBoxBase.Width,
 pictureBoxBase.Height);
             Draw();
         }
@@ -29,9 +29,9 @@ pictureBoxBase.Height);
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
-                    var car = new Tanks(100, 1000, dialog.Color, dialogDop.Color,
+                    var tank = new Tanks(100, 1000, dialog.Color, dialogDop.Color,
                    true, true, true,true, Guns.Three);
-                    int place = basa + car;
+                    int place = basa + tank;
                     Draw();
                 }
             }
