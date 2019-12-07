@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using NLog;
+
 namespace WindowsFormsTANK
 {
     public partial class FormBase : Form
     {
         MultiLevelBase basa;
         FormTankConfig form;
-        private const int countLevel = 5;
+        private const int countLevel = 5;        private Logger logger;
         public FormBase()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             basa = new MultiLevelBase(countLevel, pictureBoxBase.Width,
 pictureBoxBase.Height);
             for (int i = 0; i < countLevel; i++)
@@ -45,15 +48,22 @@ pictureBoxBase.Height);
         {
             if (tank != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = basa[listBoxLevels.SelectedIndex] + tank;
-                if (place > -1)
+                try
                 {
+                    int place = basa[listBoxLevels.SelectedIndex] + tank;
+                    logger.Info("Добавлен автомобиль " + basa.ToString() + " на место " + place);
                     Draw();
                 }
-                else
+                catch (BasaOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void ButtonTake_Click(object sender, EventArgs e)//
@@ -63,25 +73,34 @@ pictureBoxBase.Height);
             {
                 if (maskedTextBox.Text != "")
                 {
+                    try { 
                     var tank = basa[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
-                    if (tank != null)
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
-                       pictureBoxTakeTank.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        tank.SetPosition(-45, 40, pictureBoxTakeTank.Width,
-                       pictureBoxTakeTank.Height);
-                        tank.DrawTank(gr);
-                        pictureBoxTakeTank.Image = bmp;
-                    }
-                    else
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
-                       pictureBoxTakeTank.Height);
-                        pictureBoxTakeTank.Image = bmp;
-                    }
+                    Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
+                    pictureBoxTakeTank.Height);
+                    Graphics gr = Graphics.FromImage(bmp);
+                    tank.SetPosition(-45, 40, pictureBoxTakeTank.Width,
+                   pictureBoxTakeTank.Height);
+                    tank.DrawTank(gr);
+                    pictureBoxTakeTank.Image = bmp;
+                    logger.Info("Изъят танк " + tank.ToString() + " с места "
++ maskedTextBox.Text);
                     Draw();
+
+                }
+                    catch (BasaOverflowException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                        Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
+                       pictureBoxTakeTank.Height);
+                        pictureBoxTakeTank.Image = bmp;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             } 
         }
@@ -95,16 +114,18 @@ pictureBoxBase.Height);
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (basa.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    basa.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }
             }
         }
 
@@ -112,17 +133,23 @@ pictureBoxBase.Height);
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (basa.LoadData(openFileDialog.FileName))
+                try
                 {
-                 
-                MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                   basa.LoadData(openFileDialog.FileName);
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
 MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+                catch (BasaOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 Draw();
             }
         }
