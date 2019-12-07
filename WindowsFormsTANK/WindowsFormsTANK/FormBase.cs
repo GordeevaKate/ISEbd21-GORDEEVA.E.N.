@@ -84,5 +84,17 @@ pictureBoxBase.Height);
             int place = basa * 15;
             Draw();
         }
+
+        private void Buttontaketank_Click(object sender, EventArgs e)
+        {
+            int place = basa * 15;
+            Draw();
+        }
+
+      //  private void Buttonremovetank_Click(object sender, EventArgs e)
+      //  {
+      //      int place = basa /\ 15;
+       //     Draw();
+      //  }
     }
 }

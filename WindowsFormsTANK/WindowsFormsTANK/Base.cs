@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
 
-public class Base<T,N> where T : class, ITransport 
+public class Base<T,N> where T : class, ITransport where N : class, IGuns
 {
-    private T[] _places;
+    private T[] _places; private N[] placesGuns;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
    private const int _placeSizeWidth = 210;
@@ -11,7 +11,7 @@ public class Base<T,N> where T : class, ITransport
     private const int _placeSizeHeight  =80;
     public Base(int sizes, int pictureWidth, int pictureHeight)
     {
-        _places = new T[sizes];
+        _places = new T[sizes]; placesGuns = new N[sizes];
         PictureWidth = pictureWidth;
         PictureHeight = pictureHeight;
         for (int i = 0; i < _places.Length; i++)
@@ -76,6 +76,30 @@ public class Base<T,N> where T : class, ITransport
         }
         return 1;
     }
+  /*  public static int operator &(Base<T, N> p, int size)
+    {
+        List<T> clones = new List<T>();
+        if (p._places.Length + 1 < size)
+        {
+            return -1;
+        }
+        for (int i = 0; i < p._places.Length; i++)
+        {
+            if (!p.CheckFreePlace(i))
+            {
+                clones.Add(p._places[i]);
+            }
+        }
+        foreach (T tank in clones)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                T newTank = (T)tank.Clone1();
+                int index = p + newTank;
+            }
+        }
+        return 1;
+    }*/
     public static int operator /(Base<T,N> p, int x)
     {
         for (int i = 0; i < x; i++)

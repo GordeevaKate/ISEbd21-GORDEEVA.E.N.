@@ -32,13 +32,14 @@
             this.buttonSetTank = new System.Windows.Forms.Button();
             this.buttonSetVehicle = new System.Windows.Forms.Button();
             this.groupBoxBase = new System.Windows.Forms.GroupBox();
+            this.buttontaketank = new System.Windows.Forms.Button();
+            this.buttonSetAll = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.pictureBoxTakeTank = new System.Windows.Forms.PictureBox();
             this.buttonTake = new System.Windows.Forms.Button();
             this.labelBaseTank = new System.Windows.Forms.Label();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelBase = new System.Windows.Forms.Label();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.buttonSetAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTank)).BeginInit();
@@ -74,6 +75,7 @@
             // 
             // groupBoxBase
             // 
+            this.groupBoxBase.Controls.Add(this.buttontaketank);
             this.groupBoxBase.Controls.Add(this.buttonSetAll);
             this.groupBoxBase.Controls.Add(this.buttonRemove);
             this.groupBoxBase.Controls.Add(this.pictureBoxTakeTank);
@@ -87,6 +89,36 @@
             this.groupBoxBase.TabIndex = 3;
             this.groupBoxBase.TabStop = false;
             // 
+            // buttontaketank
+            // 
+            this.buttontaketank.Location = new System.Drawing.Point(93, 88);
+            this.buttontaketank.Name = "buttontaketank";
+            this.buttontaketank.Size = new System.Drawing.Size(67, 50);
+            this.buttontaketank.TabIndex = 7;
+            this.buttontaketank.Text = "sell tank";
+            this.buttontaketank.UseVisualStyleBackColor = true;
+            this.buttontaketank.Click += new System.EventHandler(this.Buttontaketank_Click);
+            // 
+            // buttonSetAll
+            // 
+            this.buttonSetAll.Location = new System.Drawing.Point(6, 157);
+            this.buttonSetAll.Name = "buttonSetAll";
+            this.buttonSetAll.Size = new System.Drawing.Size(95, 32);
+            this.buttonSetAll.TabIndex = 5;
+            this.buttonSetAll.Text = "SetAll";
+            this.buttonSetAll.UseVisualStyleBackColor = true;
+            this.buttonSetAll.Click += new System.EventHandler(this.ButtonSetAll_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(6, 116);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(59, 22);
+            this.buttonRemove.TabIndex = 4;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.ButtonRemove_Click);
+            // 
             // pictureBoxTakeTank
             // 
             this.pictureBoxTakeTank.Location = new System.Drawing.Point(5, 195);
@@ -99,7 +131,7 @@
             // 
             this.buttonTake.Location = new System.Drawing.Point(6, 88);
             this.buttonTake.Name = "buttonTake";
-            this.buttonTake.Size = new System.Drawing.Size(91, 22);
+            this.buttonTake.Size = new System.Drawing.Size(44, 22);
             this.buttonTake.TabIndex = 3;
             this.buttonTake.Text = "Забрать";
             this.buttonTake.UseVisualStyleBackColor = true;
@@ -129,26 +161,6 @@
             this.labelBase.Size = new System.Drawing.Size(75, 13);
             this.labelBase.TabIndex = 0;
             this.labelBase.Text = "Забрать танк";
-            // 
-            // buttonRemove
-            // 
-            this.buttonRemove.Location = new System.Drawing.Point(6, 116);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(91, 22);
-            this.buttonRemove.TabIndex = 4;
-            this.buttonRemove.Text = "Remove";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.ButtonRemove_Click);
-            // 
-            // buttonSetAll
-            // 
-            this.buttonSetAll.Location = new System.Drawing.Point(6, 157);
-            this.buttonSetAll.Name = "buttonSetAll";
-            this.buttonSetAll.Size = new System.Drawing.Size(95, 32);
-            this.buttonSetAll.TabIndex = 5;
-            this.buttonSetAll.Text = "SetAll";
-            this.buttonSetAll.UseVisualStyleBackColor = true;
-            this.buttonSetAll.Click += new System.EventHandler(this.ButtonSetAll_Click);
             // 
             // FormBase
             // 
@@ -182,5 +194,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Button buttonSetAll;
         private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttontaketank;
     }
 }

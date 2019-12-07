@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 namespace WindowsFormsTANK
 {
     public class Tanks : TANKVehicle
@@ -7,7 +11,7 @@ namespace WindowsFormsTANK
         private int GunType;
         public Guns NumberOfGuns { private set; get; }
         public Color DopColor { private set; get; }
-    public bool Guns { private set; get; }// 
+    public bool Guns1 { private set; get; }// 
     public bool Wheels { private set; get; }// 
     public bool Symbol { private set; get; }//   
     public bool ArmoredTank { private set; get; }//    armored car
@@ -22,7 +26,7 @@ namespace WindowsFormsTANK
         MainColor = mainColor;
         DopColor = dopColor;
         Wheels = wheels;
-        Guns = guns;
+        Guns1 = guns;
         Symbol = symbol;
         ArmoredTank = armoredTank;
 
@@ -32,7 +36,7 @@ namespace WindowsFormsTANK
     {
             base.DrawTank(g);
             Brush spoiler = new SolidBrush(DopColor);
-            if (Guns)
+            if (Guns1)
         {
                 g.FillRectangle(spoiler, _startPosX + 145, _startPosY - 20, 35, 4);
                 g.FillRectangle(spoiler, _startPosX + 160, _startPosY - 10, 35, 8);
@@ -63,5 +67,10 @@ namespace WindowsFormsTANK
             }
             guns.GunsDraw(g, NumberOfGuns, DopColor);
         }
+    public override ITransport Clone()
+    {
+        return new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true, Guns.Three);
+
+    }
     }
 }

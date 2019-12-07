@@ -5,6 +5,7 @@
         void MoveTransport(Direction direction);
         void DrawTank(Graphics g);
     ITransport Clone();
+   
 }
 
 
