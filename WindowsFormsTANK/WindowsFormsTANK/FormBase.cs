@@ -5,7 +5,7 @@ namespace WindowsFormsTANK
 {
     public partial class FormBase : Form
     {
-        Base<ITransport> basa;
+        Base<ITransport, IGuns> basa;
         public FormBase()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ pictureBoxBase.Height);
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var car = new Tanks(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true, true,true);
+                   true, true, true,true, Guns.Three);
                     int place = basa + car;
                     Draw();
                 }

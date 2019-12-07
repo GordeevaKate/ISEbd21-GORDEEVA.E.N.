@@ -19,7 +19,7 @@ namespace WindowsFormsTANK
         }
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true);
+            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true, Guns.Three);
             tank.SetPosition(50, 50, pictureBoxTanks.Width,
              pictureBoxTanks.Height);
             Draw();
@@ -72,7 +72,7 @@ namespace WindowsFormsTANK
 
         private void ButtonCreateVehicle_Click(object sender, EventArgs e)
         {
-            tank = new Tanks(100, 500, Color.Green, Color.Yellow, true, true, false, true);
+            tank = new Tanks(100, 500, Color.Green, Color.Yellow, true, true, false, true, Guns.Three);
             tank.SetPosition(50, 50, pictureBoxTanks.Width,
            pictureBoxTanks.Height);
             Draw();
