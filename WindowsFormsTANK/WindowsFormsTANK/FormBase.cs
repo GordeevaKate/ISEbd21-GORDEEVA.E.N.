@@ -9,7 +9,7 @@ namespace WindowsFormsTANK
     {
         MultiLevelBase basa;
         FormTankConfig form;
-        private const int countLevel = 5;        private Logger logger;
+        private const int countLevel = 5;        private Logger logger;
         public FormBase()
         {
             InitializeComponent();
@@ -58,6 +58,7 @@ pictureBoxBase.Height);
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Info("Переполнение ");
                 }
                 catch (Exception ex)
                 {
@@ -94,6 +95,8 @@ pictureBoxBase.Height);
                        MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
                        pictureBoxTakeTank.Height);
+                        logger.Info1("Не найден танк " + " на места "
++ maskedTextBox.Text);
                         pictureBoxTakeTank.Image = bmp;
                     }
                     catch (Exception ex)
