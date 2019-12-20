@@ -10,10 +10,10 @@ namespace WindowsFormsTANK
     public bool ArmoredTank { private set; get; }//    armored car
  
     public Tanks(int maxSpeed, float weight, Color mainColor, Color dopColor,
-         bool wheels, bool armoredTank, bool guns, bool symbol) : base(maxSpeed, weight, mainColor)
+    bool wheels, bool armoredTank, bool guns, bool symbol) : base(maxSpeed, weight, mainColor)
 
-        {
-            Weight = weight;
+       {
+        Weight = weight;
         MaxSpeed = maxSpeed;
         MainColor = mainColor;
         DopColor = dopColor;
@@ -21,15 +21,14 @@ namespace WindowsFormsTANK
         Guns = guns;
         Symbol = symbol;
         ArmoredTank = armoredTank;
-
-    }
+        }
    
     public override void DrawTank(Graphics g)
-    {
+      {
             base.DrawTank(g);
             Brush spoiler = new SolidBrush(DopColor);
             if (Guns)
-        {
+            {
                 g.FillRectangle(spoiler, _startPosX + 145, _startPosY - 20, 35, 4);
                 g.FillRectangle(spoiler, _startPosX + 160, _startPosY - 10, 35, 8);
                 g.FillRectangle(spoiler, _startPosX + 185, _startPosY + 10, 35, 8);
@@ -40,6 +39,6 @@ namespace WindowsFormsTANK
                 g.DrawLine(sp, _startPosX + 150, _startPosY + 18, _startPosX + 125, _startPosY + 5);
                 g.DrawLine(sp, _startPosX + 150, _startPosY + 5, _startPosX + 125, _startPosY + 18);
             }        
-    }
+       }
     }
 }

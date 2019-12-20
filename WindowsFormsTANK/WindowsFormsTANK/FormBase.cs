@@ -6,7 +6,7 @@ namespace WindowsFormsTANK
     public partial class FormBase : Form
     {
         MultiLevelBase basa;
-        private const int countLevel = 5;
+        private const int countLevel = 5;
         public FormBase()
         {
             InitializeComponent();
@@ -30,7 +30,6 @@ pictureBoxBase.Height);
 
             }
         }
-
             private void ButtonSetTank_Click(object sender, EventArgs e)
             {
                 if (listBoxLevels.SelectedIndex > -1)
@@ -53,10 +52,7 @@ pictureBoxBase.Height);
                         }
                     }
                 }
-
-
             }
-
             private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -75,7 +71,6 @@ pictureBoxBase.Height);
                 }
             }
         }
-
         private void ButtonTake_Click(object sender, EventArgs e)
         {
 
@@ -105,12 +100,6 @@ pictureBoxBase.Height);
                 }
             } 
         }
-
-        private void LabelBaseTank_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();

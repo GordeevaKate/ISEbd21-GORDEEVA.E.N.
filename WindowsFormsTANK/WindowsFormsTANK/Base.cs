@@ -61,7 +61,6 @@ public class Base<T> where T : class, ITransport
             _places[keys[i]].DrawTank(g);
         }
     }
-   
     private void DrawMarking(Graphics g)
     {
         Pen pen = new Pen(Color.Black, 3);

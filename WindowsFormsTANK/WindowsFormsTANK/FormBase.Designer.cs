@@ -110,7 +110,6 @@
             this.labelBaseTank.Size = new System.Drawing.Size(38, 13);
             this.labelBaseTank.TabIndex = 2;
             this.labelBaseTank.Text = "место";
-            this.labelBaseTank.Click += new System.EventHandler(this.LabelBaseTank_Click);
             // 
             // maskedTextBox
             // 
