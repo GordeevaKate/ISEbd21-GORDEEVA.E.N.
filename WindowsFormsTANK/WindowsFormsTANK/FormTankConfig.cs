@@ -49,7 +49,7 @@ DragDropEffects.Copy);
 DragDropEffects.Copy);
         }
 
-        private void Panel_DragEnter(object sender, DragEventArgs e)
+        private void PanelVehicle_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
@@ -61,7 +61,7 @@ DragDropEffects.Copy);
             }
         }
 
-        private void Panel_DragDrop(object sender, DragEventArgs e)
+        private void PanelVehicle_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
             {
@@ -76,7 +76,7 @@ DragDropEffects.Copy);
             DrawTanks();
         }
 
-        private void LabelVainColors_DragDrop(object sender, DragEventArgs e)
+        private void LabelMainColors_DragDrop(object sender, DragEventArgs e)
         {
             if (tank != null)
             {
@@ -84,7 +84,6 @@ DragDropEffects.Copy);
                 DrawTanks();
             }
         }
-        /// <param name="ev"></param>
         public void AddEvent(TankDelegate ev)
         {
             if (eventAddTank == null)
@@ -113,18 +112,18 @@ DragDropEffects.Copy);
             labelSimpleGuns.DoDragDrop(labelSimpleGuns.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
-        private void labelGunsWithPattern_MouseDown(object sender, MouseEventArgs e)
+        private void labelGunsWithManyColor_MouseDown(object sender, MouseEventArgs e)
         {
-            labelGunsWithPattern.DoDragDrop(labelGunsWithPattern.Text, DragDropEffects.Move | DragDropEffects.Copy);
+            labelGunsWithManyColor.DoDragDrop(labelGunsWithManyColor.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
-        private void labelGunsWithAngle_MouseDown(object sender, MouseEventArgs e)
+        private void labelGunsWithEllipse_MouseDown(object sender, MouseEventArgs e)
         {
-            labelGunsWithAngle.DoDragDrop(labelGunsWithAngle.Text, DragDropEffects.Move | DragDropEffects.Copy);
+            labelGunsWithEllipse.DoDragDrop(labelGunsWithEllipse.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
        
        
-        private void LabelVainColors_DragEnter(object sender, DragEventArgs e)
+        private void LabelMainColors_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(Color)))
             {
@@ -177,7 +176,7 @@ DragDropEffects.Copy);
                         case "Простое орудие":
                             (tank as Tanks).SetGunType(0);
                             break;
-                        case "Орудие с рисунком":
+                        case "Овальное орудие":
                             (tank as Tanks).SetGunType(1);
                             break;
                         case "Разноцветное орудие":

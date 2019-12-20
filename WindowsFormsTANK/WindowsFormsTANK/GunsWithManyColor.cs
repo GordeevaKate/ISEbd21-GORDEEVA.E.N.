@@ -2,11 +2,11 @@
 using System.Drawing;
 
 
-public class GunsWithPattern : IGuns
+public class GunsWithManyColor : IGuns
 {
     public float _startPosX;
     public float _startPosY;
-    public GunsWithPattern(float x, float y)
+    public GunsWithManyColor(float x, float y)
     {
         _startPosX = x;
         _startPosY = y;

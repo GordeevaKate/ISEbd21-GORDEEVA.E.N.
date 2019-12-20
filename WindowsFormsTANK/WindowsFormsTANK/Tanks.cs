@@ -40,10 +40,10 @@ namespace WindowsFormsTANK
                     guns = new SimpleGuns(_startPosX, _startPosY);
                     break;
                 case 1:
-                    guns = new GunsWithPattern(_startPosX, _startPosY);
+                    guns = new GunsWithEllipse(_startPosX, _startPosY);
                     break;
                 case 2:
-                    guns = new GunsWithAngle(_startPosX, _startPosY);
+                    guns = new GunsWithManyColor(_startPosX, _startPosY);
                     break;
 
                 default:

@@ -68,8 +68,8 @@
       <DependentUpon>FormTankConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Guns.cs" />
-    <Compile Include="GunsWithAngle.cs" />
-    <Compile Include="GunsWithPattern.cs" />
+    <Compile Include="GunsWithEllipse.cs" />
+    <Compile Include="GunsWithManyColor.cs" />
     <Compile Include="IGuns.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="MultiLevelBase.cs" />
