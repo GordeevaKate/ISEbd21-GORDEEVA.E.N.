@@ -35,15 +35,11 @@ pictureBoxBase.Height);
 
             }
         }
-
-          
-            private void ButtonSetVehicle_Click(object sender, EventArgs e)
+         private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
-           //
                 form = new FormTankConfig();
                 form.AddEvent(AddTank);
-                form.Show();
-           
+                form.Show();  
         }
         private void AddTank(ITransport tank)//
         {
@@ -65,6 +61,7 @@ pictureBoxBase.Height);
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка");
                 }
             }
         }
@@ -75,47 +72,46 @@ pictureBoxBase.Height);
             {
                 if (maskedTextBox.Text != "")
                 {
-                    try { 
-                    var tank = basa[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
-                    Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
-                    pictureBoxTakeTank.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    tank.SetPosition(-45, 40, pictureBoxTakeTank.Width,
-                   pictureBoxTakeTank.Height);
-                    tank.DrawTank(gr);
-                    pictureBoxTakeTank.Image = bmp;
-                    logger.Info("Изъят танк " + tank.ToString() + " с места "
-+ maskedTextBox.Text);
-                    Draw();
-
-                }
-             /*       catch (BasaOverflowException ex)
+                    try
                     {
-                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
-                         err.Debug("Не найден танк " + " на места "+ maskedTextBox.Text);
+                        var tank = basa[listBoxLevels.SelectedIndex] -
+                       Convert.ToInt32(maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
+                        pictureBoxTakeTank.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        tank.SetPosition(-45, 40, pictureBoxTakeTank.Width,
                        pictureBoxTakeTank.Height);
-                       
+                        tank.DrawTank(gr);
                         pictureBoxTakeTank.Image = bmp;
-                       
-                    }*/
+                        logger.Info("Изъят танк " + tank.ToString() + " с места "
+    + maskedTextBox.Text);
+                        Draw();
+
+                    }
+                    catch (BasaNotFoundException ex)
+                    {
+                        {
+                            MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+        MessageBoxIcon.Error);
+                            Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
+pictureBoxTakeTank.Height);
+                            pictureBoxTakeTank.Image = bmp;
+                            logger.Error("Парковка не найдена");
+                        }
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Неизвестная ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        err.Debug("Не найден танк " + " на места " + maskedTextBox.Text);
-                    }
-                }
-            } 
+    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        logger.Error("Неизвестная ошибка");
+                    }
+            }
+            } 
         }
-
-        private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
+       private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Draw();//
+            Draw();
         }
-
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -132,10 +128,10 @@ pictureBoxBase.Height);
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    logger.Error("Неизвестная ошибка при сохранении");
+                }
             }
         }
-
         private void ЗагрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -156,6 +152,7 @@ MessageBoxIcon.Information);
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка при загрузке");
                 }
                 Draw();
             }
