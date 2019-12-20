@@ -114,8 +114,8 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(356, 421);
             this.panel.TabIndex = 2;
-            this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel_DragDrop);
-            this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.Panel_DragEnter);
+            this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.PanelVehicle_DragDrop);
+            this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.PanelVehicle_DragEnter);
             // 
             // labelDopColors
             // 
@@ -127,7 +127,7 @@
             this.labelDopColors.TabIndex = 2;
             this.labelDopColors.Text = "Дополнительный цвет";
             this.labelDopColors.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelDopColors_DragDrop);
-            this.labelDopColors.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelVainColors_DragEnter);
+            this.labelDopColors.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelMainColors_DragEnter);
             // 
             // labelVainColors
             // 
@@ -138,8 +138,8 @@
             this.labelVainColors.Size = new System.Drawing.Size(277, 41);
             this.labelVainColors.TabIndex = 1;
             this.labelVainColors.Text = "Основной цвет";
-            this.labelVainColors.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelVainColors_DragDrop);
-            this.labelVainColors.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelVainColors_DragEnter);
+            this.labelVainColors.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelMainColors_DragDrop);
+            this.labelVainColors.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelMainColors_DragEnter);
             this.labelVainColors.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelVehicle_MouseDown);
             // 
             // pictureBox
