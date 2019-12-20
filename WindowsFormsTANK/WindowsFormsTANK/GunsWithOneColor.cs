@@ -1,12 +1,9 @@
-﻿
-   using System.Drawing;
-
-public class GunsWithAngle : IGuns
-
+﻿using System.Drawing;
+public class GunsWithOneColor: IGuns
 {
         public float _startPosX;
         public float _startPosY;
-        public GunsWithAngle(float x, float y)
+        public GunsWithOneColor(float x, float y)
         {
             _startPosX = x;
             _startPosY = y;
@@ -14,12 +11,8 @@ public class GunsWithAngle : IGuns
         public void GunsDraw(Graphics g, Guns numberOfGuns, Color color)
         {
             int n = (int)numberOfGuns;
-            Brush br1 = new SolidBrush(color);
-
+        Brush br1 = new SolidBrush(color);
             Brush br2 = new SolidBrush(Color.Orange);
-
-         
-
             Pen pen = new Pen(color);
             if (n >= 0)
             {
@@ -37,5 +30,4 @@ public class GunsWithAngle : IGuns
                 }
             }
         }
-
     }

@@ -48,8 +48,8 @@
   <ItemGroup>
     <Compile Include="ArmoredVehicle.cs" />
     <Compile Include="Base.cs" />
-    <Compile Include="GunsWithAngle.cs" />
-    <Compile Include="GunsWithPattern.cs" />
+    <Compile Include="GunsWithOneColor.cs" />
+    <Compile Include="GunsWithEllipse.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>

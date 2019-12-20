@@ -1,13 +1,11 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
-
 public class Base<T,N> where T : class, ITransport where N : class, IGuns
 {
     private T[] _places; private N[] placesGuns;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
    private const int _placeSizeWidth = 210;
- 
     private const int _placeSizeHeight  =80;
     public Base(int sizes, int pictureWidth, int pictureHeight)
     {
@@ -34,17 +32,14 @@ public class Base<T,N> where T : class, ITransport where N : class, IGuns
         }
         return -1;
     }
- 
-
     public static T operator -(Base<T,N> p, int index)
     {
         if (index < 0 || index > p._places.Length)
         {
             return null;
         }
-        if (!p.CheckFreePlace(index))
-         
- {
+        if (!p.CheckFreePlace(index))     
+        {
             T tank = p._places[index-1];
             p._places[index-1] = null;
             return tank;
@@ -76,30 +71,6 @@ public class Base<T,N> where T : class, ITransport where N : class, IGuns
         }
         return 1;
     }
-  /*  public static int operator &(Base<T, N> p, int size)
-    {
-        List<T> clones = new List<T>();
-        if (p._places.Length + 1 < size)
-        {
-            return -1;
-        }
-        for (int i = 0; i < p._places.Length; i++)
-        {
-            if (!p.CheckFreePlace(i))
-            {
-                clones.Add(p._places[i]);
-            }
-        }
-        foreach (T tank in clones)
-        {
-            for (int i = 0; i < size; i++)
-            {
-                T newTank = (T)tank.Clone1();
-                int index = p + newTank;
-            }
-        }
-        return 1;
-    }*/
     public static int operator /(Base<T,N> p, int x)
     {
         for (int i = 0; i < x; i++)
@@ -112,7 +83,6 @@ public class Base<T,N> where T : class, ITransport where N : class, IGuns
     {
         return _places[index] == null;
     }
- 
     public void Draw(Graphics g)
     {
         DrawMarking(g);
@@ -124,7 +94,6 @@ public class Base<T,N> where T : class, ITransport where N : class, IGuns
             }
         }
     }
-   
     private void DrawMarking(Graphics g)
     {
         Pen pen = new Pen(Color.Black, 3);

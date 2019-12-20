@@ -19,9 +19,8 @@ pictureBoxBase.Height);
             Graphics gr = Graphics.FromImage(bmp);
             basa.Draw(gr);
             pictureBoxBase.Image = bmp;
-        }
-
-        private void ButtonSetTank_Click(object sender, EventArgs e)
+        }
+      private void ButtonSetTank_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -34,9 +33,8 @@ pictureBoxBase.Height);
                     int place = basa + tank;
                     Draw();
                 }
-            }
+            }
         }
-
         private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -47,8 +45,7 @@ pictureBoxBase.Height);
                 Draw();
             }
         }
-
-        private void ButtonTake_Click(object sender, EventArgs e)
+       private void ButtonTake_Click(object sender, EventArgs e)
         {
             if (maskedTextBox.Text != "")
             {
@@ -78,23 +75,15 @@ pictureBoxBase.Height);
             int place = basa / 15;
             Draw();
         }
-
         private void ButtonSetAll_Click(object sender, EventArgs e)
         {
             int place = basa * 15;
             Draw();
         }
-
         private void Buttontaketank_Click(object sender, EventArgs e)
         {
             int place = basa * 15;
             Draw();
         }
-
-      //  private void Buttonremovetank_Click(object sender, EventArgs e)
-      //  {
-      //      int place = basa /\ 15;
-       //     Draw();
-      //  }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace WindowsFormsTANK
 {
     public class Tanks : TANKVehicle
@@ -20,8 +17,8 @@ namespace WindowsFormsTANK
          bool wheels, bool armoredTank, bool guns, bool symbol, Guns numberOfGuns) : base(maxSpeed, weight, mainColor)
 
         {
-            GunType = new Random().Next(0, 3);
-            Weight = weight;
+        GunType = new Random().Next(0, 3);
+        Weight = weight;
         MaxSpeed = maxSpeed;
         MainColor = mainColor;
         DopColor = dopColor;
@@ -29,7 +26,6 @@ namespace WindowsFormsTANK
         Guns1 = guns;
         Symbol = symbol;
         ArmoredTank = armoredTank;
-
     }
    
     public override void DrawTank(Graphics g)
@@ -55,10 +51,10 @@ namespace WindowsFormsTANK
                     guns = new SimpleGuns(_startPosX, _startPosY);
                     break;
                 case 1:
-                    guns = new GunsWithPattern(_startPosX, _startPosY);
+                    guns = new GunsWithOneColor(_startPosX, _startPosY);
                     break;
                 case 2:
-                    guns = new GunsWithAngle(_startPosX, _startPosY);
+                    guns = new GunsWithEllipse(_startPosX, _startPosY);
                     break;
 
                 default:

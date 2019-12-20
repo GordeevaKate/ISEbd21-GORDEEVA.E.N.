@@ -32,7 +32,6 @@
             this.buttonSetTank = new System.Windows.Forms.Button();
             this.buttonSetVehicle = new System.Windows.Forms.Button();
             this.groupBoxBase = new System.Windows.Forms.GroupBox();
-            this.buttontaketank = new System.Windows.Forms.Button();
             this.buttonSetAll = new System.Windows.Forms.Button();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.pictureBoxTakeTank = new System.Windows.Forms.PictureBox();
@@ -75,7 +74,6 @@
             // 
             // groupBoxBase
             // 
-            this.groupBoxBase.Controls.Add(this.buttontaketank);
             this.groupBoxBase.Controls.Add(this.buttonSetAll);
             this.groupBoxBase.Controls.Add(this.buttonRemove);
             this.groupBoxBase.Controls.Add(this.pictureBoxTakeTank);
@@ -88,16 +86,6 @@
             this.groupBoxBase.Size = new System.Drawing.Size(180, 364);
             this.groupBoxBase.TabIndex = 3;
             this.groupBoxBase.TabStop = false;
-            // 
-            // buttontaketank
-            // 
-            this.buttontaketank.Location = new System.Drawing.Point(93, 88);
-            this.buttontaketank.Name = "buttontaketank";
-            this.buttontaketank.Size = new System.Drawing.Size(67, 50);
-            this.buttontaketank.TabIndex = 7;
-            this.buttontaketank.Text = "sell tank";
-            this.buttontaketank.UseVisualStyleBackColor = true;
-            this.buttontaketank.Click += new System.EventHandler(this.Buttontaketank_Click);
             // 
             // buttonSetAll
             // 
@@ -194,6 +182,5 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Button buttonSetAll;
         private System.Windows.Forms.Button buttonRemove;
-        private System.Windows.Forms.Button buttontaketank;
     }
 }
