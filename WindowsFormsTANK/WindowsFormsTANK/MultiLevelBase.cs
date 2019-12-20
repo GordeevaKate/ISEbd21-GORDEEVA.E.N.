@@ -14,11 +14,7 @@ namespace WindowsFormsTANK
                pictureHeight));
             }
         }
-        /// <summary>
-        /// Индексатор
-        /// </summary>
-        /// <param name="ind"></param>
-        /// <returns></returns>
+
         public Base<ITransport> this[int ind]
         {
             get

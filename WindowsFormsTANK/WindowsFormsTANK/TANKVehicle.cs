@@ -14,21 +14,21 @@ namespace WindowsFormsTANK
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
             {
-                // вправо
+             
                 case Direction.Right:
                     if (_startPosX + step < _pictureWidth - 245)
                     {
                         _startPosX += step;
                     }
                     break;
-                //влево
+             
                 case Direction.Left:
                     if (_startPosX - step > -85)
                     {
                         _startPosX -= step;
                     }
                     break;
-                //вверх
+
                 case Direction.Up:
                     if (_startPosY - step > 20)
                     {

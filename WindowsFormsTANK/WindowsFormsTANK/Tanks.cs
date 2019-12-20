@@ -5,10 +5,10 @@ namespace WindowsFormsTANK
     public class Tanks : TANKVehicle
     { 
     public Color DopColor { private set; get; }
-    public bool Guns { private set; get; }// 
-    public bool Wheels { private set; get; }// 
-    public bool Symbol { private set; get; }//   
-    public bool ArmoredTank { private set; get; }//    armored car
+    public bool Guns { private set; get; }
+    public bool Wheels { private set; get; }
+    public bool Symbol { private set; get; } 
+    public bool ArmoredTank { private set; get; }
  
     public Tanks(int maxSpeed, float weight, Color mainColor, Color dopColor,
          bool wheels, bool armoredTank, bool guns, bool symbol) : base(maxSpeed, weight, mainColor)

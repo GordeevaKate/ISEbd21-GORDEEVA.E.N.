@@ -7,7 +7,7 @@ namespace WindowsFormsTANK
     {
         MultiLevelBase basa;
         FormTankConfig form;
-        private const int countLevel = 5;
+        private const int countLevel = 5;
         public FormBase()
         {
             InitializeComponent();
@@ -19,7 +19,7 @@ pictureBoxBase.Height);
             }
             listBoxLevels.SelectedIndex = 0;
         }
-      private void Draw()//
+      private void Draw()
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
@@ -28,20 +28,15 @@ pictureBoxBase.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 basa[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxBase.Image = bmp;
-
             }
-        }
-
-          
+        }     
             private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
-           //
                 form = new FormTankConfig();
                 form.AddEvent(AddTank);
-                form.Show();
-           
-        }
-        private void AddTank(ITransport tank)//
+                form.Show();          
+       }
+       private void AddTank(ITransport tank)//
         {
             if (tank != null && listBoxLevels.SelectedIndex > -1)
             {
@@ -58,7 +53,6 @@ pictureBoxBase.Height);
         }
         private void ButtonTake_Click(object sender, EventArgs e)//
         {
-
             if (listBoxLevels.SelectedIndex > -1)
             {
                 if (maskedTextBox.Text != "")
@@ -83,9 +77,8 @@ pictureBoxBase.Height);
                     }
                     Draw();
                 }
-            } 
+            } 
         }
-
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();//
