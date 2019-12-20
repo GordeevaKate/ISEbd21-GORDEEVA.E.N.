@@ -5,11 +5,11 @@ namespace WindowsFormsTANK
 {
     public partial class FormBase : Form
     {
-        Base<ITransport> basa;
+        Base<ITransport, IGuns> basa;
         public FormBase()
         {
             InitializeComponent();
-            basa = new Base<ITransport>(20, pictureBoxBase.Width,
+            basa = new Base<ITransport, IGuns>(20, pictureBoxBase.Width,
 pictureBoxBase.Height);
             Draw();
         }
@@ -19,9 +19,8 @@ pictureBoxBase.Height);
             Graphics gr = Graphics.FromImage(bmp);
             basa.Draw(gr);
             pictureBoxBase.Image = bmp;
-        }
-
-        private void ButtonSetTank_Click(object sender, EventArgs e)
+        }
+      private void ButtonSetTank_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -29,14 +28,13 @@ pictureBoxBase.Height);
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
-                    var car = new Tanks(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true, true,true);
-                    int place = basa + car;
+                    var tank = new Tanks(100, 1000, dialog.Color, dialogDop.Color,
+                   true, true, true,true, Guns.Three);
+                    int place = basa + tank;
                     Draw();
                 }
-            }
+            }
         }
-
         private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
@@ -47,8 +45,7 @@ pictureBoxBase.Height);
                 Draw();
             }
         }
-
-        private void ButtonTake_Click(object sender, EventArgs e)
+       private void ButtonTake_Click(object sender, EventArgs e)
         {
             if (maskedTextBox.Text != "")
             {
@@ -71,6 +68,22 @@ pictureBoxBase.Height);
                 }
                 Draw();
             }
+        }
+
+        private void ButtonRemove_Click(object sender, EventArgs e)
+        {
+            int place = basa / 15;
+            Draw();
+        }
+        private void ButtonSetAll_Click(object sender, EventArgs e)
+        {
+            int place = basa * 15;
+            Draw();
+        }
+        private void Buttontaketank_Click(object sender, EventArgs e)
+        {
+            int place = basa * 15;
+            Draw();
         }
     }
 }

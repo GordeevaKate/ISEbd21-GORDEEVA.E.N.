@@ -3,9 +3,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsTANK
 {
-    static class Program
-    {
-       
+   static class Program
+    {  
         [STAThread]
         static void Main()
         {

@@ -19,14 +19,13 @@ namespace WindowsFormsTANK
         }
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true);
+            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true, Guns.Three);
             tank.SetPosition(50, 50, pictureBoxTanks.Width,
              pictureBoxTanks.Height);
             Draw();
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
-            //получаем имя кнопки
             string name = (sender as Button).Name;
             switch (name)
             {
@@ -51,13 +50,11 @@ namespace WindowsFormsTANK
             tank.MoveTransport(Direction.Up);
             Draw();
         }
-
         private void ButtonRight_Click(object sender, EventArgs e)
         {
             tank.MoveTransport(Direction.Right);
             Draw();
         }
-
         private void ButtonDown_Click(object sender, EventArgs e)
         {
             tank.MoveTransport(Direction.Down);
@@ -69,10 +66,9 @@ namespace WindowsFormsTANK
             tank.MoveTransport(Direction.Left);
             Draw();
         }
-
         private void ButtonCreateVehicle_Click(object sender, EventArgs e)
         {
-            tank = new Tanks(100, 500, Color.Green, Color.Yellow, true, true, false, true);
+            tank = new Tanks(100, 500, Color.Green, Color.Yellow, true, true, false, true, Guns.Three);
             tank.SetPosition(50, 50, pictureBoxTanks.Width,
            pictureBoxTanks.Height);
             Draw();

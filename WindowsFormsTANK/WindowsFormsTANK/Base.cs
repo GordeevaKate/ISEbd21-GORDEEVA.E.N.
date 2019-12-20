@@ -1,17 +1,15 @@
-﻿using System.Drawing;
-
-
-    public class Base<T> where T : class, ITransport
-    {
-    private T[] _places;
+﻿using System.Drawing;
+using System.Collections.Generic;
+public class Base<T,N> where T : class, ITransport where N : class, IGuns
+{
+    private T[] _places; private N[] placesGuns;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
    private const int _placeSizeWidth = 210;
- 
     private const int _placeSizeHeight  =80;
     public Base(int sizes, int pictureWidth, int pictureHeight)
     {
-        _places = new T[sizes];
+        _places = new T[sizes]; placesGuns = new N[sizes];
         PictureWidth = pictureWidth;
         PictureHeight = pictureHeight;
         for (int i = 0; i < _places.Length; i++)
@@ -19,7 +17,7 @@
             _places[i] = null;
         }
     }
-    public static int operator +(Base<T> p, T tank)
+    public static int operator +(Base<T,N> p, T tank)
     {
         for (int i = 0; i < p._places.Length; i++)
         {
@@ -34,26 +32,57 @@
         }
         return -1;
     }
- public static T operator -(Base<T> p, int index)
+    public static T operator -(Base<T,N> p, int index)
     {
         if (index < 0 || index > p._places.Length)
         {
             return null;
         }
-        if (!p.CheckFreePlace(index))
-         
- {
+        if (!p.CheckFreePlace(index))     
+        {
             T tank = p._places[index-1];
             p._places[index-1] = null;
             return tank;
         }
         return null;
     }
- private bool CheckFreePlace(int index)
+
+    public static int operator *(Base<T,N> p, int size)
+    {
+        List<T> clones = new List<T>();
+        if (p._places.Length + 1 < size)
+        {
+            return -1;
+        }
+        for (int i = 0; i < p._places.Length; i++)
+        {
+            if (!p.CheckFreePlace(i))
+            {
+                clones.Add(p._places[i]);
+            }
+        }
+        foreach (T vehicle in clones)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                T newVehicle = (T)vehicle.Clone();
+                int index = p + newVehicle;
+            }
+        }
+        return 1;
+    }
+    public static int operator /(Base<T,N> p, int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            p._places[i] = null;
+        }
+        return 1;
+    }
+    private bool CheckFreePlace(int index)
     {
         return _places[index] == null;
     }
- 
     public void Draw(Graphics g)
     {
         DrawMarking(g);
@@ -65,7 +94,6 @@
             }
         }
     }
-   
     private void DrawMarking(Graphics g)
     {
         Pen pen = new Pen(Color.Black, 3);
