@@ -7,7 +7,7 @@ namespace WindowsFormsTANK
     {
         MultiLevelBase basa;
         FormTankConfig form;
-        private const int countLevel = 5;
+        private const int countLevel = 5;
         public FormBase()
         {
             InitializeComponent();
@@ -35,11 +35,9 @@ pictureBoxBase.Height);
           
             private void ButtonSetVehicle_Click(object sender, EventArgs e)
         {
-           //
                 form = new FormTankConfig();
                 form.AddEvent(AddTank);
-                form.Show();
-           
+                form.Show();         
         }
         private void AddTank(ITransport tank)//
         {
@@ -85,12 +83,10 @@ pictureBoxBase.Height);
                 }
             } 
         }
-
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();//
         }
-
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -107,7 +103,6 @@ pictureBoxBase.Height);
                 }
             }
         }
-
         private void ЗагрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)

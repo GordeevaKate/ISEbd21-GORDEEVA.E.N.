@@ -33,7 +33,7 @@ namespace WindowsFormsTANK
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
                 DopColor = Color.FromName(strs[3]);
-                      Wheels = Convert.ToBoolean(strs[4]);
+                Wheels = Convert.ToBoolean(strs[4]);
                 ArmoredTank = Convert.ToBoolean(strs[5]);
                 Guns = Convert.ToBoolean(strs[6]);
                 Symbol = Convert.ToBoolean(strs[7]);

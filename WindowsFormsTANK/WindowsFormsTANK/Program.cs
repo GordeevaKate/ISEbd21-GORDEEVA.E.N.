@@ -5,8 +5,7 @@ namespace WindowsFormsTANK
 {
     public delegate void TankDelegate(ITransport tank);
     static class Program
-    {
-       
+    {   
         [STAThread]
         static void Main()
         {
