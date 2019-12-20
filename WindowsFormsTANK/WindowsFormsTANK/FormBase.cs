@@ -9,11 +9,12 @@ namespace WindowsFormsTANK
     {
         MultiLevelBase basa;
         FormTankConfig form;
-        private const int countLevel = 5;        private Logger logger;
+        private const int countLevel = 5;        private Logger logger;
+        private Logger err;
         public FormBase()
         {
             InitializeComponent();
-            logger = LogManager.GetCurrentClassLogger();
+            logger = LogManager.GetCurrentClassLogger();            err = LogManager.GetCurrentClassLogger();
             basa = new MultiLevelBase(countLevel, pictureBoxBase.Width,
 pictureBoxBase.Height);
             for (int i = 0; i < countLevel; i++)
@@ -58,7 +59,7 @@ pictureBoxBase.Height);
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
-                    logger.Info("Переполнение ");
+                    err.Debug("Переполнение ");
                 }
                 catch (Exception ex)
                 {
@@ -67,7 +68,7 @@ pictureBoxBase.Height);
                 }
             }
         }
-        private void ButtonTake_Click(object sender, EventArgs e)//
+        private void ButtonTake_Click(object sender, EventArgs e)
         {
 
             if (listBoxLevels.SelectedIndex > -1)
@@ -89,20 +90,22 @@ pictureBoxBase.Height);
                     Draw();
 
                 }
-                    catch (BasaOverflowException ex)
+             /*       catch (BasaOverflowException ex)
                     {
                         MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
                        MessageBoxIcon.Error);
+                         err.Debug("Не найден танк " + " на места "+ maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
                        pictureBoxTakeTank.Height);
-                        logger.Info1("Не найден танк " + " на места "
-+ maskedTextBox.Text);
+                       
                         pictureBoxTakeTank.Image = bmp;
-                    }
+                       
+                    }*/
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Неизвестная ошибка",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        err.Debug("Не найден танк " + " на места " + maskedTextBox.Text);
                     }
                 }
             } 
@@ -123,6 +126,7 @@ pictureBoxBase.Height);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                     logger.Info("Сохранено в файл " + saveFileDialog.FileName);
+                    
                 }
                 catch (Exception ex)
                 {
