@@ -42,17 +42,17 @@ namespace WindowsFormsTANK
                 IShapeOfGuns shape;
                 switch (ShapeForm)
                 {
-                    case "1":
-                        shape = new DrawShapeOfGuns1(_startPosX, _startPosY);
+                    case "Rectangle":
+                        shape = new DrawShapeOfGunsRectangle(_startPosX, _startPosY);
                         break;
-                    case "2":
-                        shape = new DrawShapeOfGuns2(_startPosX, _startPosY);
+                    case "Ellipse":
+                        shape = new DrawShapeOfGunsEllipse(_startPosX, _startPosY);
                         break;
-                    case "3":
-                        shape = new DrawShapeOfGuns3(_startPosX, _startPosY);
+                    case "TwoRectangle":
+                        shape = new DrawShapeOfGunsTwoRectangle(_startPosX, _startPosY);
                         break;
                     default:
-                        shape = new DrawShapeOfGuns1(_startPosX, _startPosY);
+                        shape = new DrawShapeOfGunsRectangle(_startPosX, _startPosY);
                         break;
                 }
                 shape.DrawShape(g, Color.Red);

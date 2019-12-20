@@ -19,7 +19,7 @@ namespace WindowsFormsTANK
         }
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true,true,"1");
+            tank = new Tanks(200, 2000, Color.Green, Color.Yellow, true, true, true, true,true,"Rectangle");
             tank.SetPosition(50, 50, pictureBoxTanks.Width,
              pictureBoxTanks.Height);
             Draw();

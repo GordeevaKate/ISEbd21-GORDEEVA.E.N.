@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
-public class DrawShapeOfGuns2 : IShapeOfGuns
+public class DrawShapeOfGunsEllipse : IShapeOfGuns
 {
     float x;
     float y;
-    public DrawShapeOfGuns2(float _startPosX, float _startPosY)
+    public DrawShapeOfGunsEllipse(float _startPosX, float _startPosY)
     {
         x = _startPosX;
         y = _startPosY;
