@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+
 public class Base<T> where T : class, ITransport
     {
     private Dictionary<int, T> _places;
+
+    private ArrayList _removedVehicles;
     private int _maxCount;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
@@ -14,6 +18,8 @@ public class Base<T> where T : class, ITransport
     {
         _maxCount = sizes;
         _places = new Dictionary<int, T>();
+   
+         _removedVehicles = new ArrayList();
         PictureWidth = pictureWidth;
         PictureHeight = pictureHeight;
     }
@@ -38,16 +44,20 @@ public class Base<T> where T : class, ITransport
     }
  public static T operator -(Base<T> p, int index)
     {     
-        if (!p.CheckFreePlace(index))
-         
- {
+        if (!p.CheckFreePlace(index))  
+        {
             T tank = p._places[index-1];
             p._places.Remove(index-1);
+            p._removedVehicles.Add(tank);
             return tank;
         }
         return null;
     }
- private bool CheckFreePlace(int index)
+    public T GetVehicleByKey(int key)//
+    {
+        return _places.ContainsKey(key) ? _places[key] : null;
+    }
+    private bool CheckFreePlace(int index)
     {
         return !_places.ContainsKey(index);
     }
@@ -76,6 +86,9 @@ public class Base<T> where T : class, ITransport
             g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
         }
     }
+   
 }
+
+
     
 

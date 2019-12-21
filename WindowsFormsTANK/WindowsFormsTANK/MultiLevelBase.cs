@@ -26,6 +26,17 @@ namespace WindowsFormsTANK
                 return null;
             }
         }
+        public ITransport this[int ind, int key]//
+        {
+            get
+            {
+                if (ind > -1 && ind < basaStages.Count)
+                {
+                    return basaStages[ind].GetVehicleByKey(key);
+                }
+                return null;
+            }
+        }
     }
 
 }
