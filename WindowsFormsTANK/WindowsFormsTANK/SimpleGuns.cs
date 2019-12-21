@@ -17,7 +17,7 @@ public class SimpleGuns : IGuns
     {
         int n = (int)numberOfGuns;
         Brush br1 = new SolidBrush(color);
-        g.FillRectangle(br1, _startPosX + 22, _startPosY + 5, 47, 15);
+      
         Pen pen = new Pen(Color.Black);
         if (n >= 0)
         {
