@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+
 public class Base<T> where T : class, ITransport
     {
     private Dictionary<int, T> _places;
-    private Queue<T> _removedVehicles;
+
+    private ArrayList _removedVehicles;
     private int _maxCount;
     private int PictureWidth { get; set; }
    private int PictureHeight { get; set; }
@@ -15,7 +18,8 @@ public class Base<T> where T : class, ITransport
     {
         _maxCount = sizes;
         _places = new Dictionary<int, T>();
-        _removedVehicles = new Queue<T>();
+   
+         _removedVehicles = new ArrayList();
         PictureWidth = pictureWidth;
         PictureHeight = pictureHeight;
     }
@@ -44,12 +48,12 @@ public class Base<T> where T : class, ITransport
         {
             T tank = p._places[index-1];
             p._places.Remove(index-1);
-            p._removedVehicles.Enqueue(tank);
+            p._removedVehicles.Add(tank);
             return tank;
         }
         return null;
     }
-    public T GetVehicleByKey(int key)
+    public T GetVehicleByKey(int key)//
     {
         return _places.ContainsKey(key) ? _places[key] : null;
     }
