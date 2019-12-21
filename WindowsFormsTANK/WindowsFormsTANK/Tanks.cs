@@ -2,9 +2,9 @@
 using System.Drawing;
 namespace WindowsFormsTANK
 {
-    public class Tanks : TANKVehicle
-    { 
-    public Color DopColor { private set; get; }
+    public class Tanks : TANKVehicle, IComparable<Tanks>, IEquatable<Tanks>
+    {
+        public Color DopColor { private set; get; }
     public bool Guns { private set; get; }// 
     public bool Wheels { private set; get; }// 
     public bool Symbol { private set; get; }//   
@@ -22,7 +22,7 @@ namespace WindowsFormsTANK
         Guns = guns;
         Symbol = symbol;
         ArmoredTank = armoredTank;
-            Random rnd = new Random();
+       Random rnd = new Random();
         }
         public Tanks(string info) : base(info)
         {
@@ -33,7 +33,7 @@ namespace WindowsFormsTANK
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
                 DopColor = Color.FromName(strs[3]);
-                      Wheels = Convert.ToBoolean(strs[4]);
+                Wheels = Convert.ToBoolean(strs[4]);
                 ArmoredTank = Convert.ToBoolean(strs[5]);
                 Guns = Convert.ToBoolean(strs[6]);
                 Symbol = Convert.ToBoolean(strs[7]);
@@ -67,7 +67,75 @@ namespace WindowsFormsTANK
             return base.ToString() + ";" + DopColor.Name + ";" + Wheels + ";" +
             ArmoredTank + ";" + Guns + ";" + Symbol;
          
-        }
+        }
+        public int CompareTo(Tanks other)
+        {
+            var res = (this is TANKVehicle).CompareTo(other is TANKVehicle);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Guns != other.Guns)
+            {
+                return Guns.CompareTo(other.Guns);
+            }
+            if (Symbol != other.Symbol)
+            {
+                return Symbol.CompareTo(other.Symbol);
+            }          
+            return 0;
+        }
+       
+        public bool Equals(Tanks other)
+        {
+            var res = (this as TANKVehicle).Equals(other as TANKVehicle);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Guns != other.Guns)
+            {
+                return false;
+            }
+            if (Symbol != other.Symbol)
+            {
+                return false;
+            }         
+            return true;
+        }
+       
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Tanks carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
 
     }
 }

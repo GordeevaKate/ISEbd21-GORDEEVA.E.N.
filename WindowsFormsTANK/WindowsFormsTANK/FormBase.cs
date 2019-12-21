@@ -57,6 +57,12 @@ pictureBoxBase.Height);
                    MessageBoxIcon.Error);
                     err.Debug("Переполнение ");
                 }
+                catch (BasaAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+   MessageBoxIcon.Error);
+                }
+                
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
@@ -156,6 +162,15 @@ MessageBoxIcon.Information);
                 }
                 Draw();
             }
+        }
+
+        private void Sort_Click(object sender, EventArgs e)
+        {
+           
+                basa.Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+       
         }
     }
 }

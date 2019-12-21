@@ -2,7 +2,7 @@
 using System.Drawing;
 namespace WindowsFormsTANK
 {
-    public class TANKVehicle : ArmoredVehicle
+    public class TANKVehicle : ArmoredVehicle, IComparable<TANKVehicle>, IEquatable<TANKVehicle>
     {
         protected const int tankWidth = 100;
         
@@ -23,38 +23,29 @@ namespace WindowsFormsTANK
                 MainColor = Color.FromName(strs[2]);
             }
         }
-
-
-
-
-
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
             {
-                // вправо
                 case Direction.Right:
                     if (_startPosX + step < _pictureWidth - 245)
                     {
                         _startPosX += step;
                     }
                     break;
-                //влево
                 case Direction.Left:
                     if (_startPosX - step > -85)
                     {
                         _startPosX -= step;
                     }
                     break;
-                //вверх
                 case Direction.Up:
                     if (_startPosY - step > 20)
                     {
                         _startPosY -= step;
                     }
                     break;
-                //вниз
                 case Direction.Down:
                     if (_startPosY + step < _pictureHeight - 60)
 
@@ -82,6 +73,66 @@ namespace WindowsFormsTANK
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
-        }
+        }        public int CompareTo(TANKVehicle other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }        public bool Equals(TANKVehicle other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is TANKVehicle carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

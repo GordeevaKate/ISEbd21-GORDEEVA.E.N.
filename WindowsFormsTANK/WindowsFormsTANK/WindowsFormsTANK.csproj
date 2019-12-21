@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArmoredVehicle.cs" />
+    <Compile Include="BasaAlreadyHaveException.cs" />
     <Compile Include="BasaNotFoundException.cs" />
     <Compile Include="BasaOccupiedPlaceException.cs" />
     <Compile Include="BasaOverflowException.cs" />
