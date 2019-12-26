@@ -111,7 +111,7 @@ namespace WindowsFormsTANK
                     string[] splitLine = line.Split(':');
                     if (splitLine.Length > 2)
                     {
-                        if (splitLine[1] == "Tanks")
+                        if (splitLine[1] == "Vehicle")
                         {
                             tank= new TANKVehicle(splitLine[2]);
                         }
