@@ -30,9 +30,7 @@ pictureBoxBase.Height);
                 pictureBoxBase.Image = bmp;
 
             }
-        }
-          
-        
+        }      
         private void ButtonTake_Click(object sender, EventArgs e)
         {
 
@@ -60,9 +58,8 @@ pictureBoxBase.Height);
                     }
                     Draw();
                 }
-            } 
+            } 
         }
-
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
@@ -82,7 +79,6 @@ pictureBoxBase.Height);
                 }
             }
         }
-
         private void ButtonRequestTank_Click_1(object sender, EventArgs e)
         {
             form = new FormTankConfig();

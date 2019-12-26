@@ -62,7 +62,6 @@ DragDropEffects.Copy);
             }
             DrawTank();
         }
-
         private void PanelForVehicle_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.Text))
@@ -72,9 +71,8 @@ DragDropEffects.Copy);
             else
             {
                 e.Effect = DragDropEffects.None;
-            }
+            }
         }
-
         private void LabelMainColor_DragDrop(object sender, DragEventArgs e)
         {
             if (tank != null)
@@ -118,7 +116,6 @@ DragDropEffects.Copy);
                 }
             }
         }
-
         private void ButtonAdd_Click(object sender, System.EventArgs e)
         {
             eventAddTank?.Invoke(tank);
