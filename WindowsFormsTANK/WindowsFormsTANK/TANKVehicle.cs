@@ -56,9 +56,5 @@ namespace WindowsFormsTANK
             g.FillEllipse(pen2, _startPosX + 120, _startPosY + 25, 15, 15);
             g.FillEllipse(pen2, _startPosX + 150, _startPosY + 25, 15, 15);         
         }
-        public override ITransport Clone()
-        {
-            return new TANKVehicle(MaxSpeed, Weight, MainColor);
-        }
     }
 }

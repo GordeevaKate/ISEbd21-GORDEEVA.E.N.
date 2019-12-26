@@ -67,15 +67,10 @@
     <Compile Include="FormTankConfig.Designer.cs">
       <DependentUpon>FormTankConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Guns.cs" />
-    <Compile Include="GunsWithEllipse.cs" />
-    <Compile Include="GunsWithManyColor.cs" />
-    <Compile Include="IGuns.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="MultiLevelBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleGuns.cs" />
     <Compile Include="Tanks.cs" />
     <Compile Include="TANKVehicle.cs" />
     <EmbeddedResource Include="FormBase.resx">

@@ -4,59 +4,40 @@ namespace WindowsFormsTANK
     public class Tanks : TANKVehicle
     {
     private int GunsType;
-    public Guns NumberOfGuns { private set; get; }
-    public Color DopColor { private set; get; }
+        public bool Guns { private set; get; }
+        public Color DopColor { private set; get; }
     public bool Wheels { private set; get; }
     public bool Symbol { private set; get; }
     public bool ArmoredTank { private set; get; }
  
     public Tanks(int maxSpeed, float weight, Color mainColor, Color dopColor,
-    bool wheels, bool armoredTank, bool symbol, Guns numberOfGuns, int gunsType) : base(maxSpeed, weight, mainColor)
+    bool wheels, bool armoredTank, bool guns, bool symbol) : base(maxSpeed, weight, mainColor)
 
        {
-        NumberOfGuns = numberOfGuns;
-        GunsType = gunsType;
         Weight = weight;
         MaxSpeed = maxSpeed;
         MainColor = mainColor;
         DopColor = dopColor;
         Wheels = wheels;
-        Symbol = symbol;
+            Guns = guns;
+            Symbol = symbol;
         ArmoredTank = armoredTank;
         }
         public void SetSecondaryColor(Color color)
         {
             DopColor = color;
         }
-        public void SetGunType(int type)
-        {
-            GunsType = type;
-        }
         public override void DrawTank(Graphics g)
       {
             base.DrawTank(g);
             Brush spoiler = new SolidBrush(DopColor);
-            IGuns guns;
+            if (Guns)
             {
-                switch (GunsType)
-                {
-                    case 0:
-                        guns = new SimpleGuns(_startPosX, _startPosY);
-                        break;
-                    case 1:
-                        guns = new GunsWithEllipse(_startPosX, _startPosY);
-                        break;
-                    case 2:
-                        guns = new GunsWithManyColor(_startPosX, _startPosY);
-                        break;
-
-                    default:
-                        guns = new SimpleGuns(_startPosX, _startPosY);
-                        break;
-                }
+                g.FillRectangle(spoiler, _startPosX + 145, _startPosY - 20, 35, 4);
+                g.FillRectangle(spoiler, _startPosX + 160, _startPosY - 10, 35, 8);
+                g.FillRectangle(spoiler, _startPosX + 185, _startPosY + 10, 35, 8);
             }
-            guns.GunsDraw(g, NumberOfGuns, DopColor);
-                if (Symbol)
+            if (Symbol)
             {
                 Pen sp = new Pen(DopColor);
                 g.DrawLine(sp, _startPosX + 150, _startPosY + 18, _startPosX + 125, _startPosY + 5);
