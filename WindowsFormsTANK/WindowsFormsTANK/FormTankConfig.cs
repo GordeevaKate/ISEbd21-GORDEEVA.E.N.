@@ -26,7 +26,7 @@ namespace WindowsFormsTANK
             {
                 Bitmap bmp = new Bitmap(pictureBoxForVehicle.Width, pictureBoxForVehicle.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                tank.SetPosition(5, 5, pictureBoxForVehicle.Width, pictureBoxForVehicle.Height);
+                tank.SetPosition(5, 45, pictureBoxForVehicle.Width, pictureBoxForVehicle.Height);
                 tank.DrawTank(gr);
                 pictureBoxForVehicle.Image = bmp;
             }
