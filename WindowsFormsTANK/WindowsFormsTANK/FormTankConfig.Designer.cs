@@ -119,6 +119,7 @@
             // 
             // labelDopColor
             // 
+            this.labelDopColor.AllowDrop = true;
             this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelDopColor.Location = new System.Drawing.Point(23, 345);
             this.labelDopColor.Name = "labelDopColor";
@@ -130,6 +131,7 @@
             // 
             // labelMainColor
             // 
+            this.labelMainColor.AllowDrop = true;
             this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelMainColor.Location = new System.Drawing.Point(22, 284);
             this.labelMainColor.Name = "labelMainColor";
