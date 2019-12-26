@@ -60,14 +60,14 @@
             this.groupBox.Controls.Add(this.labelTank);
             this.groupBox.Location = new System.Drawing.Point(19, 12);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(213, 375);
+            this.groupBox.Size = new System.Drawing.Size(213, 509);
             this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "тип бронемашины";
             // 
             // buttonCansel
             // 
-            this.buttonCansel.Location = new System.Drawing.Point(14, 261);
+            this.buttonCansel.Location = new System.Drawing.Point(6, 238);
             this.buttonCansel.Name = "buttonCansel";
             this.buttonCansel.Size = new System.Drawing.Size(169, 32);
             this.buttonCansel.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(17, 201);
+            this.buttonAdd.Location = new System.Drawing.Point(6, 174);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(169, 32);
             this.buttonAdd.TabIndex = 2;
@@ -87,7 +87,7 @@
             // labelVehicle
             // 
             this.labelVehicle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelVehicle.Location = new System.Drawing.Point(17, 110);
+            this.labelVehicle.Location = new System.Drawing.Point(6, 107);
             this.labelVehicle.Name = "labelVehicle";
             this.labelVehicle.Size = new System.Drawing.Size(169, 33);
             this.labelVehicle.TabIndex = 1;
@@ -112,7 +112,7 @@
             this.panelForVehicle.Controls.Add(this.pictureBoxForVehicle);
             this.panelForVehicle.Location = new System.Drawing.Point(252, 16);
             this.panelForVehicle.Name = "panelForVehicle";
-            this.panelForVehicle.Size = new System.Drawing.Size(302, 401);
+            this.panelForVehicle.Size = new System.Drawing.Size(302, 505);
             this.panelForVehicle.TabIndex = 2;
             this.panelForVehicle.DragDrop += new System.Windows.Forms.DragEventHandler(this.PanelForVehicle_DragDrop);
             this.panelForVehicle.DragEnter += new System.Windows.Forms.DragEventHandler(this.PanelForVehicle_DragEnter);
@@ -121,7 +121,7 @@
             // 
             this.labelDopColor.AllowDrop = true;
             this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelDopColor.Location = new System.Drawing.Point(23, 345);
+            this.labelDopColor.Location = new System.Drawing.Point(22, 453);
             this.labelDopColor.Name = "labelDopColor";
             this.labelDopColor.Size = new System.Drawing.Size(249, 37);
             this.labelDopColor.TabIndex = 2;
@@ -133,7 +133,7 @@
             // 
             this.labelMainColor.AllowDrop = true;
             this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMainColor.Location = new System.Drawing.Point(22, 284);
+            this.labelMainColor.Location = new System.Drawing.Point(22, 396);
             this.labelMainColor.Name = "labelMainColor";
             this.labelMainColor.Size = new System.Drawing.Size(249, 37);
             this.labelMainColor.TabIndex = 1;
@@ -243,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 533);
             this.Controls.Add(this.groupBoxColor);
             this.Controls.Add(this.panelForVehicle);
             this.Controls.Add(this.groupBox);

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-public class Base<T> where T : class, ITransport
-    {
+public class Base<T> where T : class, ITransport 
+{
     private Dictionary<int, T> _places;
     private int _maxCount;
     private int PictureWidth { get; set; }
@@ -37,7 +38,7 @@ public class Base<T> where T : class, ITransport
         return -1;
     }
  public static T operator -(Base<T> p, int index)
-    {     
+    {
         if (!p.CheckFreePlace(index))      
        {
             T tank = p._places[index-1];
@@ -46,7 +47,7 @@ public class Base<T> where T : class, ITransport
         }
         return null;
     }
- private bool CheckFreePlace(int index)
+    private bool CheckFreePlace(int index)
     {
         return !_places.ContainsKey(index);
     }
@@ -56,7 +57,7 @@ public class Base<T> where T : class, ITransport
         var keys = _places.Keys.ToList();
         for (int i = 0; i < keys.Count; i++)
         {
-            _places[keys[i]].DrawTank(g);
+                _places[i].DrawTank(g);
         }
     }
     private void DrawMarking(Graphics g)
@@ -72,6 +73,26 @@ public class Base<T> where T : class, ITransport
                 i * _placeSizeWidth + 110, j * _placeSizeHeight);
             }
             g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+        }
+    }
+    public T this[int ind]
+    {
+        get
+        {
+            if (_places.ContainsKey(ind))
+            {
+                return _places[ind];
+            }
+            return null;
+        }
+        set
+        {
+            if (CheckFreePlace(ind))
+            {
+                _places.Add(ind, value);
+                _places[ind].SetPosition(-55 + ind / 5 * _placeSizeWidth + 5,
+                 ind % 5 * _placeSizeHeight + 28, PictureWidth, PictureHeight);
+            }
         }
     }
 }

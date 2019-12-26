@@ -37,16 +37,23 @@
             this.labelBase = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.buttonRequestTank = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTank)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxBase
             // 
-            this.pictureBoxBase.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBase.Location = new System.Drawing.Point(0, 27);
             this.pictureBoxBase.Name = "pictureBoxBase";
-            this.pictureBoxBase.Size = new System.Drawing.Size(873, 506);
+            this.pictureBoxBase.Size = new System.Drawing.Size(873, 479);
             this.pictureBoxBase.TabIndex = 0;
             this.pictureBoxBase.TabStop = false;
             // 
@@ -125,6 +132,49 @@
             this.buttonRequestTank.UseVisualStyleBackColor = true;
             this.buttonRequestTank.Click += new System.EventHandler(this.ButtonRequestTank_Click_1);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1258, 24);
+            this.menuStrip.TabIndex = 6;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click_1);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "saveFileDialog";
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,13 +184,18 @@
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBoxBase);
             this.Controls.Add(this.pictureBoxBase);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormBase";
             this.Text = "База";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             this.groupBoxBase.ResumeLayout(false);
             this.groupBoxBase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTank)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -155,5 +210,11 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.ListBox listBoxLevels;
         private System.Windows.Forms.Button buttonRequestTank;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

@@ -36,13 +36,11 @@ namespace WindowsFormsTANK
             (sender as Control).DoDragDrop((sender as Control).BackColor,
            DragDropEffects.Move | DragDropEffects.Copy);
         }
-
         private void LabelTanks_MouseDown(object sender, MouseEventArgs e)
         {
             labelTank.DoDragDrop(labelTank.Text, DragDropEffects.Move |
             DragDropEffects.Copy);
         }
-
         private void LabelVehicle_MouseDown(object sender, MouseEventArgs e)
         {
             labelVehicle.DoDragDrop(labelVehicle.Text, DragDropEffects.Move |
@@ -56,8 +54,8 @@ DragDropEffects.Copy);
                     tank = new TANKVehicle(100, 500, Color.White);
                     break;
                 case "Tank":
-                    tank = new Tanks(100, 500, Color.White, Color.Black, true, true, true,
-                   true);
+                    tank = new Tanks(100, 500, Color.White, Color.Black, true, true,
+                   true, true);
                     break;
             }
             DrawTank();
@@ -103,7 +101,6 @@ DragDropEffects.Copy);
                 e.Effect = DragDropEffects.None;
             }
         }
-
         private void LabelDopColor_DragDrop(object sender, DragEventArgs e)
         {
             if (tank != null)
@@ -121,6 +118,5 @@ DragDropEffects.Copy);
             eventAddTank?.Invoke(tank);
             Close();
         }
-
     }
 }

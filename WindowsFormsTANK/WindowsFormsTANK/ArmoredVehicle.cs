@@ -22,4 +22,3 @@ public abstract class ArmoredVehicle : ITransport
     public abstract void MoveTransport(Direction direction);
     public abstract void DrawTank(Graphics g);
 }
-
