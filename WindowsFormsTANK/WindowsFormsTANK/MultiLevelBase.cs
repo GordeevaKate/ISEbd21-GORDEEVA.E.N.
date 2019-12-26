@@ -31,7 +31,7 @@ namespace WindowsFormsTANK
                 return null;
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -45,30 +45,33 @@ namespace WindowsFormsTANK
                     sw.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var tank = level[i];
-                        if (tank != null)
+                        try
                         {
-                            if(tank.GetType().Name == "Tanks")
+                            var tank = level[i];
+                            if (tank != null)
                             {
-                                sw.Write(i + ":Tank:");
+                                if (tank.GetType().Name == "Tanks")
+                                {
+                                    sw.Write(i + ":Tank:");
+                                }
+                                if (tank.GetType().Name == "TANKVehicle")
+                                {
+                                    sw.Write(i + ":Vehicle:");
+                                }
+                                sw.WriteLine(tank);
                             }
-                            if (tank.GetType().Name == "TANKVehicle")
-                            {
-                                sw.Write(i + ":Vehicle:");
-                            }
-                            sw.WriteLine(tank);
                         }
+                        finally { }
                     }
                 }
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             int counter = -1;
@@ -90,7 +93,7 @@ namespace WindowsFormsTANK
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
 
                 while ((line = sr.ReadLine()) != null)
@@ -122,7 +125,7 @@ namespace WindowsFormsTANK
                         basaStages[counter][Convert.ToInt32(splitLine[0])] = tank;
                     }
                 }
-                return true;
+
             }
         }
     }

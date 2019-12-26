@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using NLog;
 namespace WindowsFormsTANK
 {
     public partial class FormBase : Form
     {
+        private Logger logger;
         MultiLevelBase basa;
         private const int countLevel = 5;
         FormTankConfig form;
         public FormBase()
         {
+            logger = LogManager.GetCurrentClassLogger();
             InitializeComponent();
             basa = new MultiLevelBase(countLevel, pictureBoxBase.Width,
 pictureBoxBase.Height);
@@ -38,10 +41,10 @@ pictureBoxBase.Height);
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var tank = basa[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
-                    if (tank != null)
-                    {
+                    try {
+                        var tank = basa[listBoxLevels.SelectedIndex] -
+                       Convert.ToInt32(maskedTextBox.Text);
+
                         Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
                        pictureBoxTakeTank.Height);
                         Graphics gr = Graphics.FromImage(bmp);
@@ -49,14 +52,24 @@ pictureBoxBase.Height);
                        pictureBoxTakeTank.Height);
                         tank.DrawTank(gr);
                         pictureBoxTakeTank.Image = bmp;
+                        logger.Info("Изъят tank " + tank.ToString() + " с места "
+                           + maskedTextBox.Text);
                     }
-                    else
+                    catch (BasaNotFoundException ex)
                     {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+    MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTakeTank.Width,
-                       pictureBoxTakeTank.Height);
+                            pictureBoxTakeTank.Height);
                         pictureBoxTakeTank.Image = bmp;
+                        logger.Error("Парковка не найдена");
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        logger.Error("Неизвестная ошибка");
+                    }
                 }
             } 
         }
@@ -68,14 +81,23 @@ pictureBoxBase.Height);
         {
             if (tank != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = basa[listBoxLevels.SelectedIndex] + tank;
-                if (place > -1)
+                try
                 {
+                    int place = basa[listBoxLevels.SelectedIndex] + tank;
+                    logger.Info("Добавлен tank " + tank.ToString() + " на место "
+   + place);
                     Draw();
                 }
-                else
+                catch (BasaOverflowException ex)
                 {
-                    MessageBox.Show("Тank не удалось поставить :(");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error); logger.Error("Переполнение парковки");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка");
                 }
             }
         }
@@ -89,16 +111,21 @@ pictureBoxBase.Height);
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (basa.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    basa.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
+                }                
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    logger.Error("Неизвестная ошибка при сохранении");
                 }
+
+
             }
         }
 
@@ -106,16 +133,24 @@ pictureBoxBase.Height);
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (basa.LoadData(openFileDialog.FileName))
-                {
+                try  {
 
+                   basa.LoadData(openFileDialog.FileName);
+                  
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-   MessageBoxIcon.Information);
+                 MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+                catch (BasaOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Место занято");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Неизвестная ошибка при загрузке");
                 }
                 Draw();
             }
