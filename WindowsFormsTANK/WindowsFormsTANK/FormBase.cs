@@ -7,6 +7,7 @@ namespace WindowsFormsTANK
     {
         MultiLevelBase basa;
         private const int countLevel = 5;
+        FormTankConfig form;
         public FormBase()
         {
             InitializeComponent();
@@ -100,6 +101,7 @@ pictureBoxBase.Height);
                 }
             } 
         }
+
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();

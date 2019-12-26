@@ -22,8 +22,11 @@ namespace WindowsFormsTANK
         Symbol = symbol;
         ArmoredTank = armoredTank;
         }
-   
-    public override void DrawTank(Graphics g)
+        public void SetSecondaryColor(Color color)
+        {
+            SecondaryColor = color;
+        }
+        public override void DrawTank(Graphics g)
       {
             base.DrawTank(g);
             Brush spoiler = new SolidBrush(DopColor);
