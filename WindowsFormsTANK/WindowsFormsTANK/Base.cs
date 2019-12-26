@@ -38,9 +38,8 @@ public class Base<T> where T : class, ITransport
     }
  public static T operator -(Base<T> p, int index)
     {     
-        if (!p.CheckFreePlace(index))
-         
- {
+        if (!p.CheckFreePlace(index))      
+       {
             T tank = p._places[index-1];
             p._places.Remove(index-1);
             return tank;
@@ -51,7 +50,6 @@ public class Base<T> where T : class, ITransport
     {
         return !_places.ContainsKey(index);
     }
- 
     public void Draw(Graphics g)
     {
         DrawMarking(g);

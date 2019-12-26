@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsTANK
 {
+    public delegate void TankDelegate(ITransport tank);
     static class Program
     {
        

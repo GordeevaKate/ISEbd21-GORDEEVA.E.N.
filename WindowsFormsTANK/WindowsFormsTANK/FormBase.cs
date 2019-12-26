@@ -7,6 +7,7 @@ namespace WindowsFormsTANK
     {
         MultiLevelBase basa;
         private const int countLevel = 5;
+        FormTankConfig form;
         public FormBase()
         {
             InitializeComponent();
@@ -29,48 +30,7 @@ pictureBoxBase.Height);
                 pictureBoxBase.Image = bmp;
 
             }
-        }
-            private void ButtonSetTank_Click(object sender, EventArgs e)
-            {
-                if (listBoxLevels.SelectedIndex > -1)
-                {
-                    ColorDialog dialog = new ColorDialog();
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        ColorDialog dialogDop = new ColorDialog();
-                        if (dialogDop.ShowDialog() == DialogResult.OK)
-                        {
-                            var car = new Tanks(100, 1000, dialog.Color,
-                           dialogDop.Color, true,true, true, true);
-                            int place = basa[listBoxLevels.SelectedIndex] + car;
-                            if (place == -1)
-                            {
-                                MessageBox.Show("Нет свободных мест", "Ошибка",
-                               MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            Draw();
-                        }
-                    }
-                }
-            }
-            private void ButtonSetVehicle_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new TANKVehicle(100, 1000, dialog.Color);
-                    int place = basa[listBoxLevels.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
+        }      
         private void ButtonTake_Click(object sender, EventArgs e)
         {
 
@@ -98,11 +58,32 @@ pictureBoxBase.Height);
                     }
                     Draw();
                 }
-            } 
+            } 
         }
         private void ListBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+        private void AddTank(ITransport tank)
+        {
+            if (tank != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = basa[listBoxLevels.SelectedIndex] + tank;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Тank не удалось поставить :(");
+                }
+            }
+        }
+        private void ButtonRequestTank_Click_1(object sender, EventArgs e)
+        {
+            form = new FormTankConfig();
+            form.AddEvent(AddTank);
+            form.Show();
         }
     }
 }
