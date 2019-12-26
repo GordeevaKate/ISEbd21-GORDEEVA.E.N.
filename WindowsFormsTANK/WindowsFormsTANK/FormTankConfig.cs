@@ -48,6 +48,10 @@ namespace WindowsFormsTANK
             labelVehicle.DoDragDrop(labelVehicle.Text, DragDropEffects.Move |
 DragDropEffects.Copy);
         }
+        private void labelSimpleGuns_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelSimpleGuns.DoDragDrop(labelSimpleGuns.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
         private void PanelForVehicle_DragDrop(object sender, DragEventArgs e)
         {
             switch (e.Data.GetData(DataFormats.Text).ToString())
@@ -56,8 +60,8 @@ DragDropEffects.Copy);
                     tank = new TANKVehicle(100, 500, Color.White);
                     break;
                 case "Tank":
-                    tank = new Tanks(100, 500, Color.White, Color.Black, true, true, true,
-                   true);
+                    tank = new Tanks(100, 500, Color.White, Color.Black, true, true,
+                   true, Guns.Three, 0);
                     break;
             }
             DrawTank();
@@ -103,7 +107,6 @@ DragDropEffects.Copy);
                 e.Effect = DragDropEffects.None;
             }
         }
-
         private void LabelDopColor_DragDrop(object sender, DragEventArgs e)
         {
             if (tank != null)
@@ -121,6 +124,48 @@ DragDropEffects.Copy);
             eventAddTank?.Invoke(tank);
             Close();
         }
+        private void LabelGunsWithManyColor_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelGunsWithManyColor.DoDragDrop(labelGunsWithManyColor.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
 
+        private void LabelGunsWithEllipse_MouseDown(object sender, MouseEventArgs e)
+        {
+            labelGunsWithEllipse.DoDragDrop(labelGunsWithEllipse.Text, DragDropEffects.Move | DragDropEffects.Copy);
+        }
+        private void LabelGunsType_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void LabelGunsType_DragDrop(object sender, DragEventArgs e)
+        {
+            if (tank != null)
+            {
+                if (tank is Tanks)
+                {
+                    switch (e.Data.GetData(DataFormats.Text).ToString())
+                    {
+                        case "Простое орудие":
+                            (tank as Tanks).SetGunType(0);
+                            break;
+                        case "Овальное орудие":
+                            (tank as Tanks).SetGunType(1);
+                            break;
+                        case "Разноцветное орудие":
+                            (tank as Tanks).SetGunType(2);
+                            break;
+                    }
+                    DrawTank();
+                }
+            }
+        }
     }
 }
