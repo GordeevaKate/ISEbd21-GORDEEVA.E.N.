@@ -73,6 +73,6 @@ public class Base<T> where T : class, ITransport
             g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
         }
     }
-}11
+}
     
 
