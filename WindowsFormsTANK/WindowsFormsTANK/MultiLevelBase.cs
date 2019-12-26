@@ -43,30 +43,30 @@ namespace WindowsFormsTANK
                 foreach (var level in basaStages)
                 {
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport tank in level)
                     {
-                        try
+                        if (tank != null)
                         {
-                            var tank = level[i];
-                            if (tank != null)
+                            if (tank.GetType().Name == "Tanks")
                             {
-                                if (tank.GetType().Name == "Tanks")
-                                {
-                                    sw.Write(i + ":Tank:");
-                                }
-                                if (tank.GetType().Name == "TANKVehicle")
-                                {
-                                    sw.Write(i + ":Vehicle:");
-                                }
-                                sw.WriteLine(tank);
+                                sw.Write(level.GetKey + ":Tank:");
                             }
+                            if (tank.GetType().Name == "TANKVehicle")
+                            {
+                                sw.Write(level.GetKey + ":Vehicle:");
+                            }
+                            sw.WriteLine(tank);
+
                         }
-                        finally { }
+
                     }
                 }
             }
         }
-
+        public void Sort()
+        {
+            basaStages.Sort();
+        }
         public void LoadData(string filename)
         {
             if (!File.Exists(filename))
