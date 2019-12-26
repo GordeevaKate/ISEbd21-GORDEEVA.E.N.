@@ -111,7 +111,7 @@ namespace WindowsFormsTANK
                     string[] splitLine = line.Split(':');
                     if (splitLine.Length > 2)
                     {
-                        if (splitLine[1] == "Tanks")
+                        if (splitLine[1] == "Vehicle")
                         {
                             tank= new TANKVehicle(splitLine[2]);
                         }
@@ -120,6 +120,91 @@ namespace WindowsFormsTANK
                             tank = new Tanks(splitLine[2]);
                         }
                         basaStages[counter][Convert.ToInt32(splitLine[0])] = tank;
+                    }
+                }
+                return true;
+            }
+        }
+        public bool SaveLevel(int levelIndex, string filename)
+        {
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+
+            if (levelIndex < 0 || levelIndex >= basaStages.Count)
+            {
+                return false;
+            }
+
+            if (basaStages[levelIndex] == null)
+            {
+                return false;
+            }
+
+            var level = basaStages[levelIndex];
+
+            using (StreamWriter sw = new StreamWriter(filename))
+            {
+                for (int i = 0; i < countPlaces; i++)
+                {
+                    var tank = level[i];
+                    if (tank != null)
+                    {
+                        if (tank.GetType().Name == "Tanks")
+                        {
+                            sw.Write(i + ":Tank:" + tank);
+                        }
+                        if (tank.GetType().Name == "TANKVehicle")
+                        {
+                            sw.Write(i + ":Vehicle:" + tank);
+                        }
+                      
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool LoadLevel(int levelIndex, string filename)
+        {
+            if (levelIndex < 0 || levelIndex >= basaStages.Count)
+            {
+                return false;
+            }
+
+            if (!File.Exists(filename) || basaStages[levelIndex] == null)
+            {
+                return false;
+            }
+            basaStages[levelIndex].Clear();
+
+            ITransport tank = null;
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (string.IsNullOrEmpty(line))
+                    {
+                        continue;
+                    }
+
+                    string[] splitLine = line.Split(':');
+                    if (splitLine.Length > 2)
+                    {
+                        if (splitLine[1] == "Vehicle")
+                        {
+                            tank = new TANKVehicle(splitLine[2]);
+                        }
+                        else
+                        {
+                            tank = new Tanks(splitLine[2]);
+                        }
+                        if (tank != null)
+                        {
+                            basaStages[levelIndex][Convert.ToInt32(splitLine[0])] = tractor;
+                        }
                     }
                 }
                 return true;

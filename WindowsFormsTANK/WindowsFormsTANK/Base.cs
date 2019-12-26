@@ -95,6 +95,10 @@ public class Base<T> where T : class, ITransport
             }
         }
     }
+    public void Clear()
+    {
+        _places.Clear();
+    }
 }
     
 

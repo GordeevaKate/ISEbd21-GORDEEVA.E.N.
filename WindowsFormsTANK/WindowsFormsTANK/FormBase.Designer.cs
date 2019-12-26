@@ -43,6 +43,8 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.saveLavelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeTank)).BeginInit();
@@ -146,7 +148,9 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.loadToolStripMenuItem,
+            this.saveLavelToolStripMenuItem,
+            this.loadLevelToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -174,6 +178,20 @@
             // 
             this.saveFileDialog.FileName = "saveFileDialog";
             this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveLavelToolStripMenuItem
+            // 
+            this.saveLavelToolStripMenuItem.Name = "saveLavelToolStripMenuItem";
+            this.saveLavelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveLavelToolStripMenuItem.Text = "save lavel";
+            this.saveLavelToolStripMenuItem.Click += new System.EventHandler(this.SaveLavelToolStripMenuItem_Click);
+            // 
+            // loadLevelToolStripMenuItem
+            // 
+            this.loadLevelToolStripMenuItem.Name = "loadLevelToolStripMenuItem";
+            this.loadLevelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadLevelToolStripMenuItem.Text = "load level";
+            this.loadLevelToolStripMenuItem.Click += new System.EventHandler(this.LoadLevelToolStripMenuItem_Click);
             // 
             // FormBase
             // 
@@ -216,5 +234,7 @@
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem saveLavelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadLevelToolStripMenuItem;
     }
 }
