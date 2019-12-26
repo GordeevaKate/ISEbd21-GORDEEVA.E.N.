@@ -32,18 +32,18 @@
             this.labelVehicle = new System.Windows.Forms.Label();
             this.labelTank = new System.Windows.Forms.Label();
             this.panelForVehicle = new System.Windows.Forms.Panel();
+            this.labelDopColor = new System.Windows.Forms.Label();
+            this.labelMainColor = new System.Windows.Forms.Label();
             this.pictureBoxForVehicle = new System.Windows.Forms.PictureBox();
             this.groupBoxColor = new System.Windows.Forms.GroupBox();
+            this.panelPurple = new System.Windows.Forms.Panel();
+            this.panelYellow = new System.Windows.Forms.Panel();
+            this.panelBlue = new System.Windows.Forms.Panel();
             this.panelFuchsia = new System.Windows.Forms.Panel();
             this.panelGreen = new System.Windows.Forms.Panel();
             this.panelWhite = new System.Windows.Forms.Panel();
             this.panelBlack = new System.Windows.Forms.Panel();
             this.panelRed = new System.Windows.Forms.Panel();
-            this.panelBlue = new System.Windows.Forms.Panel();
-            this.panelYellow = new System.Windows.Forms.Panel();
-            this.panelPurple = new System.Windows.Forms.Panel();
-            this.labelMainColor = new System.Windows.Forms.Label();
-            this.labelDopColor = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             this.panelForVehicle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForVehicle)).BeginInit();
@@ -94,6 +94,28 @@
             this.panelForVehicle.DragDrop += new System.Windows.Forms.DragEventHandler(this.PanelForVehicle_DragDrop);
             this.panelForVehicle.DragEnter += new System.Windows.Forms.DragEventHandler(this.PanelForVehicle_DragEnter);
             // 
+            // labelDopColor
+            // 
+            this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelDopColor.Location = new System.Drawing.Point(23, 345);
+            this.labelDopColor.Name = "labelDopColor";
+            this.labelDopColor.Size = new System.Drawing.Size(249, 37);
+            this.labelDopColor.TabIndex = 2;
+            this.labelDopColor.Text = "Dop Color";
+            this.labelDopColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelDopColor_DragDrop);
+            this.labelDopColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelDopColor_DragEnter);
+            // 
+            // labelMainColor
+            // 
+            this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMainColor.Location = new System.Drawing.Point(22, 284);
+            this.labelMainColor.Name = "labelMainColor";
+            this.labelMainColor.Size = new System.Drawing.Size(249, 37);
+            this.labelMainColor.TabIndex = 1;
+            this.labelMainColor.Text = "Main Color";
+            this.labelMainColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.LabelMainColor_DragDrop);
+            this.labelMainColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.LabelMainColor_DragEnter);
+            // 
             // pictureBoxForVehicle
             // 
             this.pictureBoxForVehicle.Location = new System.Drawing.Point(23, 29);
@@ -118,6 +140,30 @@
             this.groupBoxColor.TabIndex = 3;
             this.groupBoxColor.TabStop = false;
             this.groupBoxColor.Text = "цвета";
+            // 
+            // panelPurple
+            // 
+            this.panelPurple.BackColor = System.Drawing.Color.Purple;
+            this.panelPurple.Location = new System.Drawing.Point(110, 257);
+            this.panelPurple.Name = "panelPurple";
+            this.panelPurple.Size = new System.Drawing.Size(52, 43);
+            this.panelPurple.TabIndex = 7;
+            // 
+            // panelYellow
+            // 
+            this.panelYellow.BackColor = System.Drawing.Color.Yellow;
+            this.panelYellow.Location = new System.Drawing.Point(25, 257);
+            this.panelYellow.Name = "panelYellow";
+            this.panelYellow.Size = new System.Drawing.Size(52, 43);
+            this.panelYellow.TabIndex = 6;
+            // 
+            // panelBlue
+            // 
+            this.panelBlue.BackColor = System.Drawing.Color.Blue;
+            this.panelBlue.Location = new System.Drawing.Point(110, 187);
+            this.panelBlue.Name = "panelBlue";
+            this.panelBlue.Size = new System.Drawing.Size(52, 43);
+            this.panelBlue.TabIndex = 5;
             // 
             // panelFuchsia
             // 
@@ -158,48 +204,6 @@
             this.panelRed.Name = "panelRed";
             this.panelRed.Size = new System.Drawing.Size(52, 43);
             this.panelRed.TabIndex = 0;
-            // 
-            // panelBlue
-            // 
-            this.panelBlue.BackColor = System.Drawing.Color.Blue;
-            this.panelBlue.Location = new System.Drawing.Point(110, 187);
-            this.panelBlue.Name = "panelBlue";
-            this.panelBlue.Size = new System.Drawing.Size(52, 43);
-            this.panelBlue.TabIndex = 5;
-            // 
-            // panelYellow
-            // 
-            this.panelYellow.BackColor = System.Drawing.Color.Yellow;
-            this.panelYellow.Location = new System.Drawing.Point(25, 257);
-            this.panelYellow.Name = "panelYellow";
-            this.panelYellow.Size = new System.Drawing.Size(52, 43);
-            this.panelYellow.TabIndex = 6;
-            // 
-            // panelPurple
-            // 
-            this.panelPurple.BackColor = System.Drawing.Color.Purple;
-            this.panelPurple.Location = new System.Drawing.Point(110, 257);
-            this.panelPurple.Name = "panelPurple";
-            this.panelPurple.Size = new System.Drawing.Size(52, 43);
-            this.panelPurple.TabIndex = 7;
-            // 
-            // labelMainColor
-            // 
-            this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMainColor.Location = new System.Drawing.Point(22, 284);
-            this.labelMainColor.Name = "labelMainColor";
-            this.labelMainColor.Size = new System.Drawing.Size(249, 37);
-            this.labelMainColor.TabIndex = 1;
-            this.labelMainColor.Text = "Main Color";
-            // 
-            // labelDopColor
-            // 
-            this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelDopColor.Location = new System.Drawing.Point(23, 345);
-            this.labelDopColor.Name = "labelDopColor";
-            this.labelDopColor.Size = new System.Drawing.Size(249, 37);
-            this.labelDopColor.TabIndex = 2;
-            this.labelDopColor.Text = "Dop Color";
             // 
             // FormTankConfig
             // 

@@ -61,6 +61,24 @@ DragDropEffects.Copy);
             }
         }
 
-       
+        private void LabelMainColor_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void LabelMainColor_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void LabelDopColor_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void LabelDopColor_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }
