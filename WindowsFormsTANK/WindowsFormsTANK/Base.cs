@@ -90,7 +90,7 @@ public class Base<T> where T : class, ITransport
             if (CheckFreePlace(ind))
             {
                 _places.Add(ind, value);
-                _places[ind].SetPosition(-90 + ind / 5 * _placeSizeWidth + 5,
+                _places[ind].SetPosition(-55 + ind / 5 * _placeSizeWidth + 5,
                  ind % 5 * _placeSizeHeight + 28, PictureWidth, PictureHeight);
             }
         }
