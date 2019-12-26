@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsTANK
@@ -7,6 +8,18 @@ namespace WindowsFormsTANK
     {
         ITransport tank = null;
         private event TankDelegate eventAddTank;
+        public FormTankConfig()
+        {
+            InitializeComponent();
+            panelBlack.MouseDown += panelColor_MouseDown;
+            panelPurple.MouseDown += panelColor_MouseDown;
+            panelFuchsia.MouseDown += panelColor_MouseDown;
+            panelGreen.MouseDown += panelColor_MouseDown;
+            panelRed.MouseDown += panelColor_MouseDown;
+            panelWhite.MouseDown += panelColor_MouseDown;
+            panelYellow.MouseDown += panelColor_MouseDown;
+            panelBlue.MouseDown += panelColor_MouseDown;            buttonCansel.Click += (object sender, EventArgs e) => { Close(); };
+        }
         private void DrawTank()
         {
             if (tank != null)
@@ -18,9 +31,10 @@ namespace WindowsFormsTANK
                 pictureBoxForVehicle.Image = bmp;
             }
         }
-        public FormTankConfig()
+        private void panelColor_MouseDown(object sender, MouseEventArgs e)
         {
-            InitializeComponent();
+            (sender as Control).DoDragDrop((sender as Control).BackColor,
+           DragDropEffects.Move | DragDropEffects.Copy);
         }
 
         private void LabelTanks_MouseDown(object sender, MouseEventArgs e)
@@ -63,22 +77,53 @@ DragDropEffects.Copy);
 
         private void LabelMainColor_DragDrop(object sender, DragEventArgs e)
         {
-
+            if (tank != null)
+            {
+                tank.SetPrimaryColor((Color)e.Data.GetData(typeof(Color)));
+                DrawTank();
+            }
         }
-
+        public void AddEvent(TankDelegate ev)
+        {
+            if (eventAddTank == null)
+            {
+                eventAddTank = new TankDelegate(ev);
+            }
+            else
+            {
+                eventAddTank += ev;
+            }
+        }
         private void LabelMainColor_DragEnter(object sender, DragEventArgs e)
         {
-
+            if (e.Data.GetDataPresent(typeof(Color)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
         }
 
         private void LabelDopColor_DragDrop(object sender, DragEventArgs e)
         {
-
+            if (tank != null)
+            {
+                if (tank is Tanks)
+                {
+                    (tank as
+                   Tanks).SetSecondaryColor((Color)e.Data.GetData(typeof(Color)));
+                    DrawTank();
+                }
+            }
         }
 
-        private void LabelDopColor_DragEnter(object sender, DragEventArgs e)
+        private void ButtonAdd_Click(object sender, System.EventArgs e)
         {
-
+            eventAddTank?.Invoke(tank);
+            Close();
         }
+
     }
 }

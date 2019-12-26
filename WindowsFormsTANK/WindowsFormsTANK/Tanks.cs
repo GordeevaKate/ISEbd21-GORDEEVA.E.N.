@@ -24,7 +24,7 @@ namespace WindowsFormsTANK
         }
         public void SetSecondaryColor(Color color)
         {
-            SecondaryColor = color;
+            DopColor = color;
         }
         public override void DrawTank(Graphics g)
       {
