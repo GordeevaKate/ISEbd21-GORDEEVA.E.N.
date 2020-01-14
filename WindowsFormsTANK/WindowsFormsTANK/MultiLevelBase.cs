@@ -153,13 +153,13 @@ namespace WindowsFormsTANK
                     {
                         if (tank.GetType().Name == "Tanks")
                         {
-                            sw.Write(i + ":Tank:" + tank);
+                            sw.Write(i + ":Tank:");
                         }
                         if (tank.GetType().Name == "TANKVehicle")
                         {
-                            sw.Write(i + ":Vehicle:" + tank);
+                            sw.Write(i + ":Vehicle:" );
                         }
-                      
+                        sw.WriteLine(tank);
                     }
                 }
             }
