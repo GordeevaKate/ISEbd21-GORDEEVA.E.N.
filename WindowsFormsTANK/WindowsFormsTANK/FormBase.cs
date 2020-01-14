@@ -123,9 +123,9 @@ pictureBoxBase.Height);
 
         private void SaveLavelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFIleDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (basa.SaveLevel(listBoxLevels.SelectedIndex, loadFIleDialog.FileName))
+                if (basa.SaveLevel(listBoxLevels.SelectedIndex, saveFileDialog.FileName))
                 {
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);

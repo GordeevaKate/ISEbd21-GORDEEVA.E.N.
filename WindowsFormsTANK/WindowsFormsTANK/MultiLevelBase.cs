@@ -203,7 +203,7 @@ namespace WindowsFormsTANK
                         }
                         if (tank != null)
                         {
-                            basaStages[levelIndex][Convert.ToInt32(splitLine[0])] = tractor;
+                            basaStages[levelIndex][Convert.ToInt32(splitLine[0])] = tank;
                         }
                     }
                 }
