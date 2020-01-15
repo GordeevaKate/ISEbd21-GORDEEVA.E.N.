@@ -22,7 +22,7 @@ public class Base<T> where T : class, ITransport
     {
         if (p._places.Count == p._maxCount)
         {
-            return -1;
+            throw new BasaOverflowException();
         }
         for (int i = 0; i < p._maxCount; i++)
         {
@@ -45,7 +45,7 @@ public class Base<T> where T : class, ITransport
             p._places.Remove(index-1);
             return tank;
         }
-        return null;
+        throw new BasaNotFoundException(index);
     }
     private bool CheckFreePlace(int index)
     {
@@ -83,7 +83,7 @@ public class Base<T> where T : class, ITransport
             {
                 return _places[ind];
             }
-            return null;
+            throw new BasaNotFoundException(ind);
         }
         set
         {
@@ -92,6 +92,10 @@ public class Base<T> where T : class, ITransport
                 _places.Add(ind, value);
                 _places[ind].SetPosition(-55 + ind / 5 * _placeSizeWidth + 5,
                  ind % 5 * _placeSizeHeight + 28, PictureWidth, PictureHeight);
+            }
+            else
+            {
+                throw new BasaOccupiedPlaceException(ind);
             }
         }
     }
