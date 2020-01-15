@@ -155,5 +155,12 @@ pictureBoxBase.Height);
                 Draw();
             }
         }
+
+        private void ButtonSort_Click(object sender, EventArgs e)
+        {
+            basa.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
+        }
     }
 }

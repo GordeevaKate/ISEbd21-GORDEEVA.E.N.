@@ -1,9 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-public class Base<T> where T : class, ITransport 
+using System;
+using System.Collections;
+using WindowsFormsTANK;
+
+public class Base<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Base<T>>  where T : class, ITransport
 {
+    private int _currentIndex;
     private Dictionary<int, T> _places;
     private int _maxCount;
     private int PictureWidth { get; set; }
@@ -17,6 +21,100 @@ public class Base<T> where T : class, ITransport
         _places = new Dictionary<int, T>();
         PictureWidth = pictureWidth;
         PictureHeight = pictureHeight;
+    }
+    public int GetKey
+    {
+        get
+        {
+            return _places.Keys.ToList()[_currentIndex];
+        }
+    }
+    public T Current
+    {
+        get
+        {
+            return _places[_places.Keys.ToList()[_currentIndex]];
+        }
+    }
+    object IEnumerator.Current
+    {
+        get
+        {
+            return Current;
+        }
+    }
+    public void Dispose()
+    {
+        _places.Clear();
+    }
+
+    public bool MoveNext()
+    {
+        if (_currentIndex + 1 >= _places.Count)
+        {
+            Reset();
+            return false;
+        }
+        _currentIndex++;
+        return true;
+    }
+
+    public void Reset()
+    {
+        _currentIndex = -1;
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        return this;
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public int CompareTo(Base<T> other)
+    {
+        if (_places.Count > other._places.Count)
+        {
+            return -1;
+        }
+        else if (_places.Count < other._places.Count)
+        {
+            return 1;
+        }
+        else if (_places.Count > 0)
+        {
+            var thisKeys = _places.Keys.ToList();
+            var otherKeys = other._places.Keys.ToList();
+            for (int i = 0; i < _places.Count; ++i)
+            {
+                if (_places[thisKeys[i]] is TANKVehicle && other._places[thisKeys[i]] is
+               Tanks)
+                {
+                    return 1;
+                }
+                if (_places[thisKeys[i]] is Tanks && other._places[thisKeys[i]]
+                is TANKVehicle)
+                {
+                    return -1;
+                }
+                if (_places[thisKeys[i]] is TANKVehicle && other._places[thisKeys[i]] is
+                TANKVehicle)
+                {
+                    return (_places[thisKeys[i]] is
+                  TANKVehicle).CompareTo(other._places[thisKeys[i]] is TANKVehicle);
+                }
+                if (_places[thisKeys[i]] is Tanks && other._places[thisKeys[i]]
+                is Tanks)
+                {
+                    return (_places[thisKeys[i]] is
+                   Tanks).CompareTo(other._places[thisKeys[i]] is Tanks);
+                }
+            }
+        }
+        return 0;
     }
     public static int operator +(Base<T> p, T tank)
     {

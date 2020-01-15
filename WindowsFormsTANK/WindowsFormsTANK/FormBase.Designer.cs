@@ -30,6 +30,7 @@
         {
             this.pictureBoxBase = new System.Windows.Forms.PictureBox();
             this.groupBoxBase = new System.Windows.Forms.GroupBox();
+            this.buttonSort = new System.Windows.Forms.Button();
             this.pictureBoxTakeTank = new System.Windows.Forms.PictureBox();
             this.buttonTake = new System.Windows.Forms.Button();
             this.labelBaseTank = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             // 
             // groupBoxBase
             // 
+            this.groupBoxBase.Controls.Add(this.buttonSort);
             this.groupBoxBase.Controls.Add(this.pictureBoxTakeTank);
             this.groupBoxBase.Controls.Add(this.buttonTake);
             this.groupBoxBase.Controls.Add(this.labelBaseTank);
@@ -69,6 +71,16 @@
             this.groupBoxBase.Size = new System.Drawing.Size(180, 299);
             this.groupBoxBase.TabIndex = 3;
             this.groupBoxBase.TabStop = false;
+            // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(92, 101);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(61, 24);
+            this.buttonSort.TabIndex = 5;
+            this.buttonSort.Text = "Sort";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.ButtonSort_Click);
             // 
             // pictureBoxTakeTank
             // 
@@ -82,7 +94,7 @@
             // 
             this.buttonTake.Location = new System.Drawing.Point(5, 104);
             this.buttonTake.Name = "buttonTake";
-            this.buttonTake.Size = new System.Drawing.Size(91, 22);
+            this.buttonTake.Size = new System.Drawing.Size(63, 22);
             this.buttonTake.TabIndex = 3;
             this.buttonTake.Text = "Забрать";
             this.buttonTake.UseVisualStyleBackColor = true;
@@ -154,14 +166,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click_1);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
@@ -216,5 +228,6 @@
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button buttonSort;
     }
 }

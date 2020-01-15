@@ -2,7 +2,7 @@
 using System.Drawing;
 namespace WindowsFormsTANK
 {
-    public class TANKVehicle : ArmoredVehicle
+    public class TANKVehicle : ArmoredVehicle, IComparable<TANKVehicle>, IEquatable<TANKVehicle>
     {
         public TANKVehicle(int maxSpeed, float weight, Color mainColor)
         {
@@ -70,6 +70,72 @@ namespace WindowsFormsTANK
             g.FillEllipse(pen2, _startPosX + 180, _startPosY + 25, 15, 15);
             g.FillEllipse(pen2, _startPosX + 120, _startPosY + 25, 15, 15);
             g.FillEllipse(pen2, _startPosX + 150, _startPosY + 25, 15, 15);         
+        }
+        public int CompareTo(TANKVehicle other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(TANKVehicle other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is TANKVehicle tankObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(tankObj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
